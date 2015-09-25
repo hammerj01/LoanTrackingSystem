@@ -32,9 +32,10 @@ namespace loantracking.FORMS
                 txtLname.Text = cm.proplname;
                 txtMI.Text = cm.propMI;
                 txtAge.Text =cm.propAge.ToString();
-                txtCreditLimit.Text = cm.propCreditLimit.ToString();
+                txtTin_no.Text = cm.propCreditLimit.ToString();
                 txtContactNo.Text = cm.propContact_no;
                 txtMoneyLenderID.Text = cm.propLenderID;
+                
   
             }
         }
@@ -42,16 +43,28 @@ namespace loantracking.FORMS
         private void btnSave_Click_1(object sender, EventArgs e)
         {
             cl_moneylender cMoneyLender = new cl_moneylender();
+            cl_LenderInformation l_Info = new cl_LenderInformation();
             cMoneyLender.propfname = txtFname.Text;
             cMoneyLender.proplname = txtLname.Text;
             cMoneyLender.propMI = txtMI.Text;
             cMoneyLender.propAddress = txtAddress.Text;
             cMoneyLender.propAge = Convert.ToInt32(txtAge.Text);
-            cMoneyLender.propCreditLimit = Convert.ToDouble(txtCreditLimit.Text);
+            cMoneyLender.propCreditLimit = Convert.ToDouble(222);
             cMoneyLender.propLenderID = txtMoneyLenderID.Text;
             cMoneyLender.propContact_no = txtContactNo.Text;
 
-            if (cMoneyLender.propAge < 18)
+            l_Info.propLengthofService = Convert.ToInt32(txtlengthservice.Text);
+            l_Info.propHouseType = cbohousetype.Text;
+            l_Info.propGender = cboGender.Text;
+            l_Info.propEmail = txtemail.Text;
+            l_Info.propOccupation  = txtoccupation.Text;
+            l_Info.propPosition = txtposition.Text;
+            l_Info.propTIN_no = txtTin_no.Text;
+            l_Info.propCompanyName = txtcompanyname.Text;
+            l_Info.propCompanyAdd = txtcompanyaddress.Text;
+            l_Info.propCivilStatus = cboCivilStatus.Text;
+
+            if (cMoneyLender.propAge < 18 )
             {
                 MessageBox.Show("Age should not lesser than 18");
                 return;
@@ -63,7 +76,9 @@ namespace loantracking.FORMS
             }
             else{
                 cMoneyLender.INSERT_DATA();
-               MessageBox.Show(PUBLIC_VARS.saveData);
+                l_Info.INSERT_DATATOLENDER();
+                MessageBox.Show(PUBLIC_VARS.saveData);
+
             }
             //cMoneyLender.LOAD_MONEYLENDER(lst.lsvMoneyLender);
             //MYFUNCTIONS m = new MYFUNCTIONS();
@@ -79,8 +94,36 @@ namespace loantracking.FORMS
             this.Close();
         }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime firstDate = DateTime.Now;
 
 
- 
+            DateTime dob1 = dob.Value;
+            DateTime PresentYear = firstDate;
+                    
+         
+           TimeSpan ts = PresentYear - dob1;
+           int Age = ts.Days / 365;
+         
+           txtAge.Text = Age.ToString() ;//" Year" + "Month" +"Days"
+
+        }
+
+        private void spousedob_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime firstDate = DateTime.Now;
+
+
+            DateTime dob1 = spousedob.Value;
+            DateTime PresentYear = firstDate;
+
+
+            TimeSpan ts = PresentYear - dob1;
+            int Age = ts.Days / 365;
+
+            txtSpouseAge.Text = Age.ToString();//" Year" + "Month" +"Days"
+
+        }
     }
 }

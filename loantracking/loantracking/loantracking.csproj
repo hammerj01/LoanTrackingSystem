@@ -59,6 +59,8 @@
     <Compile Include="CLASSES\MYFUNCTIONS.cs" />
     <Compile Include="CLASSES\PUBLIC_VAR.CS" />
     <Compile Include="CLASSES\cl_collateral.cs" />
+    <Compile Include="CLASSES\cl_LenderInformation.cs" />
+    <Compile Include="CLASSES\cl_spouse.cs" />
     <Compile Include="FORMS\frmApplyLoan.cs">
       <SubType>Form</SubType>
     </Compile>

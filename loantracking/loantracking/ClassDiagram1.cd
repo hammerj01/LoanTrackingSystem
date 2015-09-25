@@ -15,7 +15,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="loantracking.CLASSES.PUBLIC_VARS" Collapsed="true">
-    <Position X="0.5" Y="1.5" Width="1.5" />
+    <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAEAAABAAAQgAEAAAAAAEAAAAAAAAAAA=</HashCode>
       <FileName>CLASSES\PUBLIC_VAR.CS</FileName>
@@ -52,6 +52,20 @@
     <TypeIdentifier>
       <HashCode>AAIAAAAgAACAAAAIAAACAAAAAAAEQAECAEAAAAAAABA=</HashCode>
       <FileName>CLASSES\cl_collateral.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="loantracking.cl_LenderInformation">
+    <Position X="6.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAQAAAQQAACAiQIAMoEQJEDABAICoBkgAAAEEAAA=</HashCode>
+      <FileName>CLASSES\cl_LenderInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="loantracking.cl_spouse">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAIACQATAAAAAgAAAAiAAgoAAAAEAAAIABAEA=</HashCode>
+      <FileName>CLASSES\cl_spouse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

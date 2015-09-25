@@ -117,7 +117,7 @@ namespace loantracking.CLASSES
         }
         public void DELETE_DATA(int loan_id) {
             string sql = "";
-            sql = "DELETE FROM tloan WHERE loan_id = " + loan_id;
+            sql = "DELETE_SPOUSE FROM tloan WHERE loan_id = " + loan_id;
             PUBLIC_VARS.d.execute(sql);
             PUBLIC_VARS.d.reader.Close();
         }

@@ -72,7 +72,7 @@ namespace loantracking
         public void DELETE_DATA()
         {
             string sql = "";
-            sql = "DELETE FROM tcollateral WHERE collateral_id = " + propCollateral_id;
+            sql = "DELETE_SPOUSE FROM tcollateral WHERE collateral_id = " + propCollateral_id;
             PUBLIC_VARS.d.execute(sql);
             PUBLIC_VARS.d.reader.Close();
         }
