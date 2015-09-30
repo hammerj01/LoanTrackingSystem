@@ -99,7 +99,7 @@ namespace loantracking
             //spouse_id, moneylender_id, spouse_name, s_age, dob, occupation, company, position
             //tspouse
 
-            sql = "INSERT INTO tspouse VALUES(NULL, " + this.propLenderID + ", '" + this.propspousename + "', " + this.props_age + "," +
+            sql = "INSERT INTO tspouse VALUES(NULL, " + this.propMoneyLender_id + ", '" + this.propspousename + "', " + this.props_age + "," +
                   " '" + this.propsDOB + "','" + this.propspouseOcc + "', '" + this.propsCompany + "','" + this.propsPosition + "')";
             PUBLIC_VARS.d.execute(sql);
             PUBLIC_VARS.d.reader.Close();
@@ -128,7 +128,7 @@ namespace loantracking
         public void LOAD_TOLISTSPOUSE(int spouseID)
         {
             sql = "";
-            sql = "SELECT * tspouse where spouse_id = " + spouseID;
+            sql = "SELECT * from tspouse where spouse_id = " + spouseID;
             PUBLIC_VARS.d.execute(sql);
             try
             {
@@ -150,9 +150,34 @@ namespace loantracking
             finally { PUBLIC_VARS.d.reader.Close(); }
         }
 
-        public void LOAD_TOFIELDSPOUSE()
+        public void LOAD_TOFIELDSPOUSE(int moneylender_ID)
         {
-            throw new System.NotImplementedException();
+            sql = "";
+            sql = "SELECT * from tspouse where moneylender_id = " + moneylender_ID;
+            PUBLIC_VARS.d.execute(sql);
+            try
+            {
+                if (PUBLIC_VARS.d.reader.HasRows)
+                {
+                    while (PUBLIC_VARS.d.reader.Read())
+                    {
+                        //spouse_id, moneylender_id, spouse_name, s_age, dob, occupation, company, position
+                        //tspouse
+
+                        propspouseID = Convert.ToInt32(PUBLIC_VARS.d.reader["spouse_id"].ToString());
+                        propMoneyLender_id = Convert.ToInt32(PUBLIC_VARS.d.reader["moneylender_id"].ToString());
+                        propspousename = PUBLIC_VARS.d.reader["spouse_name"].ToString();
+                        props_age = Convert.ToInt32(PUBLIC_VARS.d.reader["s_age"].ToString());
+                        propsDOB = DateTime.Parse(PUBLIC_VARS.d.reader["dob"].ToString());
+                        propsCompany = PUBLIC_VARS.d.reader["company"].ToString();
+                            propspouseOcc = PUBLIC_VARS.d.reader["occupation"].ToString();
+                            propsPosition = PUBLIC_VARS.d.reader["position"].ToString();
+                    }
+
+                }
+            }
+            catch (Exception e) { MessageBox.Show(e.Message); }
+            finally { PUBLIC_VARS.d.reader.Close(); }
         }
     }
 }

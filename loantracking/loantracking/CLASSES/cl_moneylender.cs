@@ -179,9 +179,11 @@ namespace loantracking.CLASSES
                         lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["fname"].ToString() + " " + PUBLIC_VARS.d.reader["mi"].ToString() + " " + PUBLIC_VARS.d.reader["lname"].ToString());
                         lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["address"].ToString());
                         lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["age"].ToString());
-                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["date_lender"].ToString());
+                        
+                        //MessageBox.Show(Convert.ToDateTime(PUBLIC_VARS.d.reader["date_lender"].ToString()).ToShortDateString().ToString());
                         lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["credit_limit"].ToString());
                         lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["contact_no"].ToString());
+                        lsv.Items[index].SubItems.Add(Convert.ToDateTime(PUBLIC_VARS.d.reader["date_lender"].ToString()).ToShortDateString().ToString());
                         //lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["lenderID"].ToString());
                     }
                 }
@@ -227,6 +229,27 @@ namespace loantracking.CLASSES
                 MessageBox.Show(ex.Message);
             }
             finally { PUBLIC_VARS.d.reader.Close(); }
+        }
+
+        public void SearchLenderByName(string txt, ListView lsv) {
+            lsv.Items.Clear();
+            string sql = "";
+            sql = "SELECT * FROM tmoneylender where lname like '%" + txt + "%'";
+            PUBLIC_VARS.d.execute(sql);
+            try
+            {
+                if(PUBLIC_VARS.d.reader.HasRows){
+                    while(PUBLIC_VARS.d.reader.Read()){
+                        int index = lsv.Items.Count;
+                        lsv.Items.Add(PUBLIC_VARS.d.reader["moneylender_id"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["fname"].ToString() + " " + PUBLIC_VARS.d.reader["mi"].ToString() + " " + PUBLIC_VARS.d.reader["lname"].ToString());
+                    }
+                }
+            }
+            catch (Exception e) { MessageBox.Show(e.Message); }
+            finally { PUBLIC_VARS.d.reader.Close(); }
+
+        
         }
     }
 }

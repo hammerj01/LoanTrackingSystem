@@ -49,9 +49,9 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
-            this.columnHeader5,
             this.columnHeader6,
-            this.columnHeader7});
+            this.columnHeader7,
+            this.columnHeader5});
             this.lsvMoneyLender.FullRowSelect = true;
             this.lsvMoneyLender.GridLines = true;
             this.lsvMoneyLender.Location = new System.Drawing.Point(0, 0);
@@ -96,7 +96,7 @@
             // 
             this.columnHeader6.Text = "Credit Limit";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader6.Width = 140;
+            this.columnHeader6.Width = 0;
             // 
             // columnHeader7
             // 

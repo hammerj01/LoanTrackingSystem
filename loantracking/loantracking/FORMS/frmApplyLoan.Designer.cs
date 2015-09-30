@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtlenderID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtAmountApplied = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lbldatenow = new System.Windows.Forms.Label();
             this.btnGenerate = new System.Windows.Forms.Button();
@@ -48,15 +48,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.lsvLender = new System.Windows.Forms.ListView();
+            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
-            // txtName
+            // txtlenderID
             // 
-            this.txtName.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(14, 82);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(256, 23);
-            this.txtName.TabIndex = 24;
+            this.txtlenderID.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtlenderID.Location = new System.Drawing.Point(14, 82);
+            this.txtlenderID.Name = "txtlenderID";
+            this.txtlenderID.Size = new System.Drawing.Size(256, 23);
+            this.txtlenderID.TabIndex = 24;
             // 
             // label5
             // 
@@ -75,6 +78,8 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(384, 23);
             this.textBox1.TabIndex = 26;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label1
             // 
@@ -104,14 +109,14 @@
             this.label2.TabIndex = 27;
             this.label2.Text = "Mode of Payment :";
             // 
-            // textBox3
+            // txtAmountApplied
             // 
-            this.textBox3.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(14, 198);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(256, 40);
-            this.textBox3.TabIndex = 30;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtAmountApplied.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAmountApplied.Location = new System.Drawing.Point(14, 198);
+            this.txtAmountApplied.Name = "txtAmountApplied";
+            this.txtAmountApplied.Size = new System.Drawing.Size(256, 40);
+            this.txtAmountApplied.TabIndex = 30;
+            this.txtAmountApplied.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
@@ -141,6 +146,7 @@
             this.btnGenerate.TabIndex = 32;
             this.btnGenerate.Text = "GENERATE";
             this.btnGenerate.UseVisualStyleBackColor = true;
+            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
             // lsvPaymentSched
             // 
@@ -224,6 +230,32 @@
             this.label6.TabIndex = 37;
             this.label6.Text = "Mode of Payment :";
             // 
+            // lsvLender
+            // 
+            this.lsvLender.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader6});
+            this.lsvLender.FullRowSelect = true;
+            this.lsvLender.GridLines = true;
+            this.lsvLender.Location = new System.Drawing.Point(12, 542);
+            this.lsvLender.Name = "lsvLender";
+            this.lsvLender.Size = new System.Drawing.Size(384, 273);
+            this.lsvLender.TabIndex = 39;
+            this.lsvLender.UseCompatibleStateImageBehavior = false;
+            this.lsvLender.View = System.Windows.Forms.View.Details;
+            this.lsvLender.SelectedIndexChanged += new System.EventHandler(this.lsvLender_SelectedIndexChanged);
+            this.lsvLender.DoubleClick += new System.EventHandler(this.lsvLender_DoubleClick);
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "id";
+            this.columnHeader5.Width = 0;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Name";
+            this.columnHeader6.Width = 380;
+            // 
             // frmApplyLoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,16 +269,17 @@
             this.Controls.Add(this.lsvPaymentSched);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.lbldatenow);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtAmountApplied);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.txtlenderID);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.lsvLender);
             this.Name = "frmApplyLoan";
-            this.Text = "frmApplyLoan";
+            this.Text = "Loan Application";
             this.Load += new System.EventHandler(this.frmApplyLoan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -255,13 +288,13 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtlenderID;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtAmountApplied;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbldatenow;
         private System.Windows.Forms.Button btnGenerate;
@@ -275,5 +308,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ListView lsvLender;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }

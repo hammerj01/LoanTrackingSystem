@@ -70,11 +70,11 @@
             this.label23 = new System.Windows.Forms.Label();
             this.cbohousetype = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtsCompany = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtspouseP = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSoCCu = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txtSpouseAge = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -493,11 +493,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.txtsCompany);
             this.groupBox2.Controls.Add(this.label25);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtspouseP);
             this.groupBox2.Controls.Add(this.label24);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtSoCCu);
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.txtSpouseAge);
             this.groupBox2.Controls.Add(this.label15);
@@ -513,13 +513,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Spouse Information";
             // 
-            // textBox3
+            // txtsCompany
             // 
-            this.textBox3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(8, 290);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(312, 23);
-            this.textBox3.TabIndex = 42;
+            this.txtsCompany.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsCompany.Location = new System.Drawing.Point(8, 290);
+            this.txtsCompany.Name = "txtsCompany";
+            this.txtsCompany.Size = new System.Drawing.Size(312, 23);
+            this.txtsCompany.TabIndex = 42;
             // 
             // label25
             // 
@@ -527,17 +527,17 @@
             this.label25.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(5, 271);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(70, 16);
+            this.label25.Size = new System.Drawing.Size(79, 16);
             this.label25.TabIndex = 41;
-            this.label25.Text = "Position :";
+            this.label25.Text = "Company :";
             // 
-            // textBox2
+            // txtspouseP
             // 
-            this.textBox2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(6, 241);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(312, 23);
-            this.textBox2.TabIndex = 40;
+            this.txtspouseP.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtspouseP.Location = new System.Drawing.Point(6, 241);
+            this.txtspouseP.Name = "txtspouseP";
+            this.txtspouseP.Size = new System.Drawing.Size(312, 23);
+            this.txtspouseP.TabIndex = 40;
             // 
             // label24
             // 
@@ -549,13 +549,13 @@
             this.label24.TabIndex = 39;
             this.label24.Text = "Position :";
             // 
-            // textBox1
+            // txtSoCCu
             // 
-            this.textBox1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(7, 193);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(311, 23);
-            this.textBox1.TabIndex = 38;
+            this.txtSoCCu.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoCCu.Location = new System.Drawing.Point(7, 193);
+            this.txtSoCCu.Name = "txtSoCCu";
+            this.txtSoCCu.Size = new System.Drawing.Size(311, 23);
+            this.txtSoCCu.TabIndex = 38;
             // 
             // label22
             // 
@@ -724,11 +724,11 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DateTimePicker spousedob;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtsCompany;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtspouseP;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSoCCu;
         private System.Windows.Forms.Label label22;
     }
 }

@@ -26,6 +26,7 @@ namespace loantracking.FORMS
         {
             if(PUBLIC_VARS.EDITMODE == true){
                 cl_moneylender cm = new cl_moneylender();
+                cl_LenderInformation c_info = new cl_LenderInformation();
                 cm.LOADTOFIELDS(mlt);
                 txtAddress.Text = cm.propAddress;
                 txtFname.Text = cm.propfname;
@@ -35,6 +36,29 @@ namespace loantracking.FORMS
                 txtTin_no.Text = cm.propCreditLimit.ToString();
                 txtContactNo.Text = cm.propContact_no;
                 txtMoneyLenderID.Text = cm.propLenderID;
+
+                c_info.LOAD_TOFIELDSinfo(mlt);
+                txtbirthplace.Text = c_info.propbirthplace;
+                dob.Value = c_info.propDOB;
+                cboCivilStatus.Text = c_info.propCivilStatus;
+                cboGender.Text = c_info.propGender;
+                cbohousetype.Text = c_info.propHouseType;
+                txtemail.Text = c_info.propEmail;
+                txtoccupation.Text = c_info.propOccupation;
+                txtposition.Text = c_info.propPosition;
+                txtlengthservice.Text = Convert.ToInt32(c_info.propLengthofService).ToString();
+                txtcompanyaddress.Text = c_info.propCompanyAdd;
+                txtcompanyname.Text = c_info.propCompanyName;
+
+                if(c_info.propCivilStatus != "Single" ){
+                    cl_spouse sp = new cl_spouse();
+                    sp.LOAD_TOFIELDSPOUSE(mlt);
+                    txtspousename.Text = sp.propspousename;
+                    txtSpouseAge.Text = Convert.ToInt32(sp.props_age).ToString();
+                    txtspouseP.Text = sp.propsPosition;
+                    txtsCompany.Text = sp.propsCompany;
+                    txtSoCCu.Text = sp.propspouseOcc;
+                }
                 
   
             }
@@ -65,6 +89,15 @@ namespace loantracking.FORMS
             l_Info.propCivilStatus = cboCivilStatus.Text;
             l_Info.propbirthplace = txtbirthplace.Text;
             l_Info.propDOB = dob.Value;
+
+            cl_spouse sp = new cl_spouse();
+
+            sp.propspousename  = txtspousename.Text;  
+            sp.propspouseOcc = txtSoCCu.Text;
+            sp.propsCompany =txtsCompany.Text;
+            sp.propsPosition=txtspouseP.Text;
+            sp.props_age = Convert.ToInt32(txtSpouseAge.Text);
+
             if (cMoneyLender.propAge < 18 )
             {
                 MessageBox.Show("Age should not lesser than 18");
@@ -73,6 +106,17 @@ namespace loantracking.FORMS
             if (PUBLIC_VARS.EDITMODE == true){
                 
                 cMoneyLender.UPDATE_DATA(mlt);
+
+                int l_sid = Convert.ToInt32(PUBLIC_VARS.d.getlastid().ToString());
+                l_Info.propmonenylenderInfoID = l_sid;
+                l_Info.INSERT_DATATOLENDER();
+                if (cboCivilStatus.Text != "Single")
+                {
+                    sp.propMoneyLender_id = l_sid;
+                    sp.UPDATE_SPOUSE(mlt);
+
+                }
+
                 MessageBox.Show( PUBLIC_VARS.updateData);
             }
             else{
@@ -81,6 +125,12 @@ namespace loantracking.FORMS
                 int l_sid = Convert.ToInt32(PUBLIC_VARS.d.getlastid().ToString());
                 l_Info.propmonenylenderInfoID = l_sid;
                 l_Info.INSERT_DATATOLENDER();
+                if(cboCivilStatus.Text != "Single"){
+                    sp.propMoneyLender_id = l_sid;
+                    sp.INSERT_SPOUSE();
+                
+                }
+                
                 MessageBox.Show(PUBLIC_VARS.saveData);
 
             }

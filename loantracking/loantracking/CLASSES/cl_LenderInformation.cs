@@ -217,7 +217,17 @@ namespace loantracking.CLASSES
                     while(PUBLIC_VARS.d.reader.Read()){
                          propmonenylenderInfoID = Convert.ToInt32(PUBLIC_VARS.d.reader["moneylender_info_id"].ToString());
                          propMoneyLender_id = Convert.ToInt32(PUBLIC_VARS.d.reader["moneylender_id"].ToString());
-                         //propbirthplace = 
+                         propbirthplace = PUBLIC_VARS.d.reader["birthplace"].ToString();
+                         propDOB = Convert.ToDateTime(PUBLIC_VARS.d.reader["dateofbirth"].ToString());
+                         propCompanyName = PUBLIC_VARS.d.reader["company_name"].ToString();
+                         propCivilStatus = PUBLIC_VARS.d.reader["civil_status"].ToString();
+                         propTIN_no = PUBLIC_VARS.d.reader["TIN_NO"].ToString();
+                         propOccupation = PUBLIC_VARS.d.reader["occupation"].ToString();
+                        propPosition = PUBLIC_VARS.d.reader["position"].ToString();
+                        propGender = PUBLIC_VARS.d.reader["gender"].ToString();
+                        propLengthofService =Convert.ToInt32(PUBLIC_VARS.d.reader["gender"].ToString());
+                        propCompanyAdd =  PUBLIC_VARS.d.reader["comp_add"].ToString();
+                        propEmail = PUBLIC_VARS.d.reader["email_add"].ToString();
                     }
                 
                 }
@@ -228,9 +238,40 @@ namespace loantracking.CLASSES
        
         }
 
-        public void LOAD_TOFIELDS()
+        public void LOAD_TOFIELDSinfo(int moneylender_id)
         {
-            throw new System.NotImplementedException();
+            sql = "";
+            sql = "SELECT * FROM  tmoneylender_information where moneylender_id = " + moneylender_id;
+            PUBLIC_VARS.d.execute(sql);
+            try
+            {//tmoneylender_information
+                //moneylender_info_id, moneylender_id, dateofbirth, birthplace, gender, civil_status,
+                //email_add, TIN_NO, HOUSE_TYPE, occupation, position, company_name, comp_add, length_of_service
+                if (PUBLIC_VARS.d.reader.HasRows)
+                {
+                    while (PUBLIC_VARS.d.reader.Read())
+                    {
+                        propmonenylenderInfoID = Convert.ToInt32(PUBLIC_VARS.d.reader["moneylender_info_id"].ToString());
+                        propMoneyLender_id = Convert.ToInt32(PUBLIC_VARS.d.reader["moneylender_id"].ToString());
+                        propbirthplace = PUBLIC_VARS.d.reader["birthplace"].ToString();
+                        propDOB = Convert.ToDateTime(PUBLIC_VARS.d.reader["dateofbirth"].ToString());
+                        propCompanyName = PUBLIC_VARS.d.reader["company_name"].ToString();
+                        propCivilStatus = PUBLIC_VARS.d.reader["civil_status"].ToString();
+                        propTIN_no = PUBLIC_VARS.d.reader["TIN_NO"].ToString();
+                        propOccupation = PUBLIC_VARS.d.reader["occupation"].ToString();
+                        propPosition = PUBLIC_VARS.d.reader["position"].ToString();
+                        propGender = PUBLIC_VARS.d.reader["gender"].ToString();
+                        propLengthofService = Convert.ToInt32(PUBLIC_VARS.d.reader["length_of_service"].ToString());
+                        propCompanyAdd = PUBLIC_VARS.d.reader["comp_add"].ToString();
+                        propEmail = PUBLIC_VARS.d.reader["email_add"].ToString();
+                        propHouseType = PUBLIC_VARS.d.reader["HOUSE_TYPE"].ToString();
+                    }
+
+                }
+
+            }
+            catch (Exception e) { MessageBox.Show(e.Message); }
+            finally { PUBLIC_VARS.d.reader.Close(); }
         }
     }
 }
