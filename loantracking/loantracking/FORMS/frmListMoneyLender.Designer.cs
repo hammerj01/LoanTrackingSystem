@@ -30,15 +30,15 @@
         {
             this.lsvMoneyLender = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // lsvMoneyLender
@@ -68,35 +68,40 @@
             this.columnHeader1.Text = "MoneylenderID";
             this.columnHeader1.Width = 0;
             // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Lender ID";
+            this.columnHeader8.Width = 120;
+            // 
             // columnHeader2
             // 
-            this.columnHeader2.DisplayIndex = 2;
             this.columnHeader2.Text = "Name";
             this.columnHeader2.Width = 200;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.DisplayIndex = 3;
             this.columnHeader3.Text = "Address";
             this.columnHeader3.Width = 230;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.DisplayIndex = 4;
             this.columnHeader4.Text = "Age";
             // 
             // columnHeader5
             // 
-            this.columnHeader5.DisplayIndex = 5;
             this.columnHeader5.Text = "Date";
             this.columnHeader5.Width = 120;
             // 
             // columnHeader6
             // 
-            this.columnHeader6.DisplayIndex = 6;
             this.columnHeader6.Text = "Credit Limit";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader6.Width = 140;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Contact No.";
+            this.columnHeader7.Width = 100;
             // 
             // btnAdd
             // 
@@ -114,21 +119,9 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(122, 42);
             this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "&DELETE_SPOUSE";
+            this.btnDelete.Text = "&DELETE";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.DisplayIndex = 7;
-            this.columnHeader7.Text = "Contact No.";
-            this.columnHeader7.Width = 100;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.DisplayIndex = 1;
-            this.columnHeader8.Text = "Lender ID";
-            this.columnHeader8.Width = 120;
             // 
             // frmListMoneyLender
             // 

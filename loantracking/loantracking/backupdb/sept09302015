@@ -1,0 +1,552 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.5.8
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema dbtracking
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ dbtracking;
+USE dbtracking;
+
+--
+-- Table structure for table `dbtracking`.`tassests`
+--
+
+DROP TABLE IF EXISTS `tassests`;
+CREATE TABLE `tassests` (
+  `assests_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`assests_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tassests`
+--
+
+/*!40000 ALTER TABLE `tassests` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tassests` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tchildren`
+--
+
+DROP TABLE IF EXISTS `tchildren`;
+CREATE TABLE `tchildren` (
+  `children_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `age` int(10) unsigned NOT NULL,
+  `occupation` varchar(100) NOT NULL,
+  `school_company` varchar(100) NOT NULL,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`children_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tchildren`
+--
+
+/*!40000 ALTER TABLE `tchildren` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tchildren` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tci`
+--
+
+DROP TABLE IF EXISTS `tci`;
+CREATE TABLE `tci` (
+  `ci_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `fname` varchar(45) NOT NULL,
+  `lname` varchar(45) NOT NULL,
+  `ci_address` varchar(45) NOT NULL,
+  `ci_tel_no` varchar(45) NOT NULL,
+  PRIMARY KEY (`ci_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tci`
+--
+
+/*!40000 ALTER TABLE `tci` DISABLE KEYS */;
+INSERT INTO `tci` (`ci_id`,`fname`,`lname`,`ci_address`,`ci_tel_no`) VALUES 
+ (1,'me','you','you and me','123123'),
+ (2,'bert','ting','taloto','12312345');
+/*!40000 ALTER TABLE `tci` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tci_moneylender`
+--
+
+DROP TABLE IF EXISTS `tci_moneylender`;
+CREATE TABLE `tci_moneylender` (
+  `ci_moneylender_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ci_id` int(10) unsigned NOT NULL,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `date_cm` datetime NOT NULL,
+  PRIMARY KEY (`ci_moneylender_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tci_moneylender`
+--
+
+/*!40000 ALTER TABLE `tci_moneylender` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tci_moneylender` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tcollateral`
+--
+
+DROP TABLE IF EXISTS `tcollateral`;
+CREATE TABLE `tcollateral` (
+  `collateral_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `collateral_name` varchar(45) NOT NULL,
+  `collateral_description` varchar(45) NOT NULL,
+  PRIMARY KEY (`collateral_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tcollateral`
+--
+
+/*!40000 ALTER TABLE `tcollateral` DISABLE KEYS */;
+INSERT INTO `tcollateral` (`collateral_id`,`collateral_name`,`collateral_description`) VALUES 
+ (2,'qq','w');
+/*!40000 ALTER TABLE `tcollateral` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tcustomer_collateral`
+--
+
+DROP TABLE IF EXISTS `tcustomer_collateral`;
+CREATE TABLE `tcustomer_collateral` (
+  `customer_collateral_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `collateral_id` int(10) unsigned NOT NULL,
+  `customer_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`customer_collateral_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tcustomer_collateral`
+--
+
+/*!40000 ALTER TABLE `tcustomer_collateral` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tcustomer_collateral` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tloan`
+--
+
+DROP TABLE IF EXISTS `tloan`;
+CREATE TABLE `tloan` (
+  `loan_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `loan_type` varchar(45) NOT NULL,
+  `loan_description` varchar(45) NOT NULL,
+  PRIMARY KEY (`loan_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tloan`
+--
+
+/*!40000 ALTER TABLE `tloan` DISABLE KEYS */;
+INSERT INTO `tloan` (`loan_id`,`loan_type`,`loan_description`) VALUES 
+ (12,'rem','rem'),
+ (13,'rems','rems');
+/*!40000 ALTER TABLE `tloan` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tmoneylender`
+--
+
+DROP TABLE IF EXISTS `tmoneylender`;
+CREATE TABLE `tmoneylender` (
+  `moneylender_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `fname` varchar(45) NOT NULL,
+  `lname` varchar(45) NOT NULL,
+  `mi` varchar(1) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `age` int(10) unsigned NOT NULL,
+  `date_lender` datetime NOT NULL,
+  `credit_limit` double(10,2) NOT NULL,
+  `contact_no` varchar(45) NOT NULL,
+  `lenderID` varchar(45) NOT NULL,
+  PRIMARY KEY (`moneylender_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tmoneylender`
+--
+
+/*!40000 ALTER TABLE `tmoneylender` DISABLE KEYS */;
+INSERT INTO `tmoneylender` (`moneylender_id`,`fname`,`lname`,`mi`,`address`,`age`,`date_lender`,`credit_limit`,`contact_no`,`lenderID`) VALUES 
+ (1,'Kissha','Mendaros','M','Cebu',22,'2015-09-13 16:30:46',22.00,'123','001'),
+ (2,'q','qwer','w','QWERTY',23,'2015-09-13 17:47:18',23232.00,'3333','002'),
+ (3,'we','tyt','q','MILEY',43,'2015-09-13 18:39:38',324.00,'','003'),
+ (4,'aq','rrr','r','DDDDD',44,'2015-09-13 19:05:59',4444.00,'','004'),
+ (5,'Ham','Hammerj','H','HAM',56,'2015-09-13 19:13:05',36666.00,'','005'),
+ (6,'jhun','merto','t','COOL HAM',56,'2015-09-13 19:14:18',222.00,'','bg'),
+ (7,'vOUGHN','mERTO','Q','HAMMERJs',67,'2015-09-13 19:16:10',222.00,'123','v99999'),
+ (8,'happy','Me','m','dwq',22,'2015-09-14 09:05:03',69.00,'rt45','rt'),
+ (9,'AQ','AQ','A','AQAQAQ AQAQ AQAQ',33,'2015-09-24 11:48:49',222.00,'','AQ111'),
+ (11,'AAAA','AAAAA','A','AAA',183,'2015-09-24 11:53:32',222.00,'AAA','AAAAA'),
+ (12,'AQAQAQ','AQQ','Q','AQ AQ\r\nAQ\r\nAQ\r\nAQ\r\n',27,'2015-09-24 11:56:02',222.00,'','112222'),
+ (13,'wqeqw','wqeqw','q','wqeqwe',87,'2015-09-29 19:11:23',222.00,'2131232321','312312321321321');
+INSERT INTO `tmoneylender` (`moneylender_id`,`fname`,`lname`,`mi`,`address`,`age`,`date_lender`,`credit_limit`,`contact_no`,`lenderID`) VALUES 
+ (14,'aq','aq','a','aqaqaqwc ',87,'2015-09-30 02:49:33',222.00,'aa','q1111'),
+ (15,'qqe','qwqe','q','qqq',87,'2015-09-30 02:53:29',222.00,'333','qw1'),
+ (16,'sss','dfsd','s','sss',33,'2015-09-30 02:57:30',222.00,'sdf23432','ss'),
+ (17,'jhun','jhun3','m','we',33,'2015-09-30 03:01:37',222.00,'23432','0005'),
+ (18,'qwewqewqeqwe','qwe','e','qweqweqwewqewqe',35,'2015-09-30 03:05:53',222.00,'12312312','000005');
+/*!40000 ALTER TABLE `tmoneylender` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tmoneylender_information`
+--
+
+DROP TABLE IF EXISTS `tmoneylender_information`;
+CREATE TABLE `tmoneylender_information` (
+  `moneylender_info_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `dateofbirth` datetime NOT NULL,
+  `birthplace` varchar(45) NOT NULL,
+  `gender` varchar(45) NOT NULL,
+  `civil_status` varchar(45) NOT NULL,
+  `email_add` varchar(100) NOT NULL,
+  `TIN_NO` varchar(45) NOT NULL,
+  `HOUSE_TYPE` varchar(45) NOT NULL,
+  `occupation` varchar(45) NOT NULL,
+  `position` varchar(45) NOT NULL,
+  `company_name` varchar(45) NOT NULL,
+  `comp_add` varchar(45) NOT NULL,
+  `length_of_service` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`moneylender_info_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tmoneylender_information`
+--
+
+/*!40000 ALTER TABLE `tmoneylender_information` DISABLE KEYS */;
+INSERT INTO `tmoneylender_information` (`moneylender_info_id`,`moneylender_id`,`dateofbirth`,`birthplace`,`gender`,`civil_status`,`email_add`,`TIN_NO`,`HOUSE_TYPE`,`occupation`,`position`,`company_name`,`comp_add`,`length_of_service`) VALUES 
+ (1,0,'0001-01-01 00:00:00','','Female','','QQQQQ','1212','','QQQQ','QQQ','','',225),
+ (2,0,'0001-01-01 00:00:00','','Female','Single','e3e3e','qw12','Owned','ee','ee','ee','ee',3),
+ (3,0,'0001-01-01 00:00:00','','Female','Single','e3e3e','qw12','Owned','ee','ee','ee','ee',3),
+ (4,17,'0001-01-01 00:00:00','fsssdfsdf','Male','Single','werwer','23432','Owned','sdfs','32423','sdfs','sdfsd',234),
+ (5,18,'1980-09-30 00:00:00','qweqwewq','Female','Married','eqweqweqw','232','Owned','qweqweq','qwewq','wqewqe','wqeqwe',432);
+/*!40000 ALTER TABLE `tmoneylender_information` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tmoneylender_loan`
+--
+
+DROP TABLE IF EXISTS `tmoneylender_loan`;
+CREATE TABLE `tmoneylender_loan` (
+  `moneylender_loan_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `loan_id` int(10) unsigned NOT NULL,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`moneylender_loan_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tmoneylender_loan`
+--
+
+/*!40000 ALTER TABLE `tmoneylender_loan` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tmoneylender_loan` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tmoneylender_payment`
+--
+
+DROP TABLE IF EXISTS `tmoneylender_payment`;
+CREATE TABLE `tmoneylender_payment` (
+  `moneylender_payment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `payment_id` int(10) unsigned NOT NULL,
+  `date_paid` datetime NOT NULL,
+  `remarks` varchar(45) NOT NULL,
+  PRIMARY KEY (`moneylender_payment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tmoneylender_payment`
+--
+
+/*!40000 ALTER TABLE `tmoneylender_payment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tmoneylender_payment` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tmoneylender_penalty`
+--
+
+DROP TABLE IF EXISTS `tmoneylender_penalty`;
+CREATE TABLE `tmoneylender_penalty` (
+  `moneylender_penalty_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `penalty_id` int(10) unsigned NOT NULL,
+  `remarks` varchar(45) NOT NULL,
+  PRIMARY KEY (`moneylender_penalty_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tmoneylender_penalty`
+--
+
+/*!40000 ALTER TABLE `tmoneylender_penalty` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tmoneylender_penalty` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tmoneylender_terms`
+--
+
+DROP TABLE IF EXISTS `tmoneylender_terms`;
+CREATE TABLE `tmoneylender_terms` (
+  `moneylender_terms_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `payment_terms` varchar(45) NOT NULL,
+  `payment_status` varchar(45) NOT NULL,
+  PRIMARY KEY (`moneylender_terms_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tmoneylender_terms`
+--
+
+/*!40000 ALTER TABLE `tmoneylender_terms` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tmoneylender_terms` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tpayment`
+--
+
+DROP TABLE IF EXISTS `tpayment`;
+CREATE TABLE `tpayment` (
+  `payment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `amount` double(10,2) NOT NULL,
+  `date_paid` double(10,2) NOT NULL,
+  `remarks` varchar(45) NOT NULL,
+  PRIMARY KEY (`payment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tpayment`
+--
+
+/*!40000 ALTER TABLE `tpayment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tpayment` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tpenalty`
+--
+
+DROP TABLE IF EXISTS `tpenalty`;
+CREATE TABLE `tpenalty` (
+  `penalty_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `penalty_amount` double(10,2) NOT NULL,
+  `description` varchar(50) NOT NULL,
+  `remarks` varchar(45) NOT NULL,
+  PRIMARY KEY (`penalty_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tpenalty`
+--
+
+/*!40000 ALTER TABLE `tpenalty` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tpenalty` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tpersonal_references`
+--
+
+DROP TABLE IF EXISTS `tpersonal_references`;
+CREATE TABLE `tpersonal_references` (
+  `personal_references_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `name_personal` varchar(45) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `contact_no` varchar(45) NOT NULL,
+  PRIMARY KEY (`personal_references_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tpersonal_references`
+--
+
+/*!40000 ALTER TABLE `tpersonal_references` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tpersonal_references` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`treal_estate`
+--
+
+DROP TABLE IF EXISTS `treal_estate`;
+CREATE TABLE `treal_estate` (
+  `real_estate_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `assests_id` int(10) unsigned NOT NULL,
+  `location` varchar(100) NOT NULL,
+  `area` varchar(100) NOT NULL,
+  `title_no` varchar(100) NOT NULL,
+  `encumbrance` varchar(100) NOT NULL,
+  PRIMARY KEY (`real_estate_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`treal_estate`
+--
+
+/*!40000 ALTER TABLE `treal_estate` DISABLE KEYS */;
+/*!40000 ALTER TABLE `treal_estate` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tschedule_of_payment`
+--
+
+DROP TABLE IF EXISTS `tschedule_of_payment`;
+CREATE TABLE `tschedule_of_payment` (
+  `schedule_of_payment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `schedule_date` datetime NOT NULL,
+  `cust_id` int(10) unsigned NOT NULL,
+  `remarks` varchar(45) NOT NULL,
+  PRIMARY KEY (`schedule_of_payment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tschedule_of_payment`
+--
+
+/*!40000 ALTER TABLE `tschedule_of_payment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tschedule_of_payment` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tsource_income`
+--
+
+DROP TABLE IF EXISTS `tsource_income`;
+CREATE TABLE `tsource_income` (
+  `source_income_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `spouse` varchar(45) NOT NULL,
+  `spouse_salary` double(10,2) NOT NULL,
+  `salary` double(10,2) NOT NULL,
+  `business` double(10,2) NOT NULL,
+  `spouse_business` double(10,2) NOT NULL,
+  `total_income` double(10,2) NOT NULL,
+  PRIMARY KEY (`source_income_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tsource_income`
+--
+
+/*!40000 ALTER TABLE `tsource_income` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tsource_income` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tspouse`
+--
+
+DROP TABLE IF EXISTS `tspouse`;
+CREATE TABLE `tspouse` (
+  `spouse_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `spouse_name` varchar(45) NOT NULL,
+  `s_age` int(10) unsigned NOT NULL,
+  `dob` datetime NOT NULL,
+  `occupation` varchar(45) NOT NULL,
+  `company` varchar(45) NOT NULL,
+  `position` varchar(45) NOT NULL,
+  PRIMARY KEY (`spouse_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tspouse`
+--
+
+/*!40000 ALTER TABLE `tspouse` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tspouse` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tuser`
+--
+
+DROP TABLE IF EXISTS `tuser`;
+CREATE TABLE `tuser` (
+  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `utype` varchar(45) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tuser`
+--
+
+/*!40000 ALTER TABLE `tuser` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tuser` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tvehicles`
+--
+
+DROP TABLE IF EXISTS `tvehicles`;
+CREATE TABLE `tvehicles` (
+  `vehicles_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `assets_id` int(10) unsigned NOT NULL,
+  `typeofvehicle` varchar(45) NOT NULL,
+  `year_model` varchar(45) NOT NULL,
+  `cost_vehicle` double(10,2) NOT NULL,
+  `plate_no` varchar(45) NOT NULL,
+  `encumbrance` varchar(45) NOT NULL,
+  PRIMARY KEY (`vehicles_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tvehicles`
+--
+
+/*!40000 ALTER TABLE `tvehicles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tvehicles` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

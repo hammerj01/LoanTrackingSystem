@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace loantracking
 {
-    public class cl_collateral
+    class cl_collateral : cl_moneylender
     {
         private int collateral_id;
         private string collateral_name;
@@ -49,7 +49,7 @@ namespace loantracking
             }
         }
     
-        public void INSERT_DATA()
+        public void INSERT_DATACollateral()
         {
             string sql = "";
             sql = "INSERT INTO tcollateral VALUES(NULL,'" + propCollateral_name + "'," +
@@ -57,6 +57,17 @@ namespace loantracking
             PUBLIC_VARS.d.execute(sql);
             PUBLIC_VARS.d.reader.Close();
             
+        }
+
+        public void INSERT_COLLATERAL_LENDER() {
+            string sql = "";
+            //customer_collateral_id, collateral_id, customer_id
+            // tcustomer_collateral
+
+            sql = "INSERT INTO tcustomer_collateral VALUES(NULL, " + this.propCollateral_id + " ," + this.propLenderID + ")";
+            PUBLIC_VARS.d.execute(sql);
+            PUBLIC_VARS.d.reader.Close();
+        
         }
 
         public void UPDATA_DATA()

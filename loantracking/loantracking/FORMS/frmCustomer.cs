@@ -63,7 +63,8 @@ namespace loantracking.FORMS
             l_Info.propCompanyName = txtcompanyname.Text;
             l_Info.propCompanyAdd = txtcompanyaddress.Text;
             l_Info.propCivilStatus = cboCivilStatus.Text;
-
+            l_Info.propbirthplace = txtbirthplace.Text;
+            l_Info.propDOB = dob.Value;
             if (cMoneyLender.propAge < 18 )
             {
                 MessageBox.Show("Age should not lesser than 18");
@@ -76,6 +77,9 @@ namespace loantracking.FORMS
             }
             else{
                 cMoneyLender.INSERT_DATA();
+
+                int l_sid = Convert.ToInt32(PUBLIC_VARS.d.getlastid().ToString());
+                l_Info.propmonenylenderInfoID = l_sid;
                 l_Info.INSERT_DATATOLENDER();
                 MessageBox.Show(PUBLIC_VARS.saveData);
 
@@ -112,6 +116,11 @@ namespace loantracking.FORMS
 
         private void spousedob_ValueChanged(object sender, EventArgs e)
         {
+           
+        }
+
+        private void spousedob_ValueChanged_1(object sender, EventArgs e)
+        {
             DateTime firstDate = DateTime.Now;
 
 
@@ -124,6 +133,21 @@ namespace loantracking.FORMS
 
             txtSpouseAge.Text = Age.ToString();//" Year" + "Month" +"Days"
 
+
+        }
+
+        private void cboCivilStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCivilStatus.Text == "Single"){
+                txtspousename.Enabled = false;
+                txtspousename.BackColor = Color.White;
+
+            }
+            else
+            {
+                txtspousename.Enabled = true;
+                txtspousename.BackColor = Color.White;
+            }
         }
     }
 }

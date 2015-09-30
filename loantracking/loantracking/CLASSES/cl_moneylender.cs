@@ -139,7 +139,7 @@ namespace loantracking.CLASSES
                   "'" + propfname + "','" + proplname + "','" + propMI + "',"  +
                   "'" + propAddress + "', " + propAge + ", NOW(), " + propCreditLimit + ", '" + propContact_no +"'," +
                   "'" + propLenderID + "')";
-            PUBLIC_VARS.d.execute(sql);
+             PUBLIC_VARS.d.execute(sql);
             PUBLIC_VARS.d.reader.Close();
         }
 

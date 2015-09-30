@@ -54,12 +54,6 @@
             this.cboCivilStatus = new System.Windows.Forms.ComboBox();
             this.txtbirthplace = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtspousename = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.spousedob = new System.Windows.Forms.DateTimePicker();
-            this.txtSpouseAge = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.txtemail = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -75,7 +69,21 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.cbohousetype = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtSpouseAge = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.spousedob = new System.Windows.Forms.DateTimePicker();
+            this.txtspousename = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -122,6 +130,7 @@
             this.txtMI.Name = "txtMI";
             this.txtMI.Size = new System.Drawing.Size(41, 23);
             this.txtMI.TabIndex = 6;
+            this.txtMI.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -179,6 +188,7 @@
             this.txtAge.ReadOnly = true;
             this.txtAge.Size = new System.Drawing.Size(41, 23);
             this.txtAge.TabIndex = 12;
+            this.txtAge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -211,7 +221,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(861, 547);
+            this.btnCancel.Location = new System.Drawing.Point(1196, 547);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(102, 38);
             this.btnCancel.TabIndex = 15;
@@ -221,7 +231,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(753, 547);
+            this.btnSave.Location = new System.Drawing.Point(1088, 547);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(102, 38);
             this.btnSave.TabIndex = 16;
@@ -236,7 +246,6 @@
             this.txtContactNo.Name = "txtContactNo";
             this.txtContactNo.Size = new System.Drawing.Size(316, 23);
             this.txtContactNo.TabIndex = 18;
-            this.txtContactNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label8
             // 
@@ -250,9 +259,10 @@
             // 
             // dob
             // 
+            this.dob.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dob.Location = new System.Drawing.Point(384, 124);
             this.dob.Name = "dob";
-            this.dob.Size = new System.Drawing.Size(316, 20);
+            this.dob.Size = new System.Drawing.Size(316, 22);
             this.dob.TabIndex = 19;
             this.dob.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -308,6 +318,7 @@
             this.cboCivilStatus.Name = "cboCivilStatus";
             this.cboCivilStatus.Size = new System.Drawing.Size(242, 21);
             this.cboCivilStatus.TabIndex = 23;
+            this.cboCivilStatus.SelectedIndexChanged += new System.EventHandler(this.cboCivilStatus_SelectedIndexChanged);
             // 
             // txtbirthplace
             // 
@@ -328,77 +339,19 @@
             this.label12.TabIndex = 25;
             this.label12.Text = "Place of Birth :";
             // 
-            // txtspousename
-            // 
-            this.txtspousename.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtspousename.Location = new System.Drawing.Point(15, 241);
-            this.txtspousename.Name = "txtspousename";
-            this.txtspousename.Size = new System.Drawing.Size(316, 23);
-            this.txtspousename.TabIndex = 28;
-            this.txtspousename.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(12, 222);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(108, 16);
-            this.label13.TabIndex = 27;
-            this.label13.Text = "Spouse Name :";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(384, 221);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(103, 16);
-            this.label14.TabIndex = 32;
-            this.label14.Text = "Date of Birth :";
-            // 
-            // spousedob
-            // 
-            this.spousedob.Location = new System.Drawing.Point(384, 240);
-            this.spousedob.Name = "spousedob";
-            this.spousedob.Size = new System.Drawing.Size(316, 20);
-            this.spousedob.TabIndex = 31;
-            this.spousedob.ValueChanged += new System.EventHandler(this.spousedob_ValueChanged);
-            // 
-            // txtSpouseAge
-            // 
-            this.txtSpouseAge.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtSpouseAge.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSpouseAge.Location = new System.Drawing.Point(337, 241);
-            this.txtSpouseAge.Name = "txtSpouseAge";
-            this.txtSpouseAge.ReadOnly = true;
-            this.txtSpouseAge.Size = new System.Drawing.Size(41, 23);
-            this.txtSpouseAge.TabIndex = 30;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(334, 222);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 16);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "Age :";
-            // 
             // txtemail
             // 
             this.txtemail.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtemail.Location = new System.Drawing.Point(721, 241);
+            this.txtemail.Location = new System.Drawing.Point(15, 233);
             this.txtemail.Name = "txtemail";
-            this.txtemail.Size = new System.Drawing.Size(242, 23);
+            this.txtemail.Size = new System.Drawing.Size(316, 23);
             this.txtemail.TabIndex = 34;
-            this.txtemail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(718, 222);
+            this.label16.Location = new System.Drawing.Point(12, 214);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(82, 16);
             this.label16.TabIndex = 33;
@@ -416,7 +369,8 @@
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.txtoccupation);
             this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Location = new System.Drawing.Point(12, 270);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 275);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(951, 194);
             this.groupBox1.TabIndex = 35;
@@ -430,7 +384,7 @@
             this.txtlengthservice.Name = "txtlengthservice";
             this.txtlengthservice.Size = new System.Drawing.Size(303, 23);
             this.txtlengthservice.TabIndex = 39;
-            this.txtlengthservice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtlengthservice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label21
             // 
@@ -487,7 +441,6 @@
             this.txtposition.Name = "txtposition";
             this.txtposition.Size = new System.Drawing.Size(303, 23);
             this.txtposition.TabIndex = 32;
-            this.txtposition.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label18
             // 
@@ -506,7 +459,6 @@
             this.txtoccupation.Name = "txtoccupation";
             this.txtoccupation.Size = new System.Drawing.Size(303, 23);
             this.txtoccupation.TabIndex = 30;
-            this.txtoccupation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label17
             // 
@@ -539,22 +491,151 @@
             this.cbohousetype.Size = new System.Drawing.Size(242, 21);
             this.cbohousetype.TabIndex = 36;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.label25);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.label24);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.txtSpouseAge);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.spousedob);
+            this.groupBox2.Controls.Add(this.txtspousename);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(980, 14);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(326, 323);
+            this.groupBox2.TabIndex = 38;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Spouse Information";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(8, 290);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(312, 23);
+            this.textBox3.TabIndex = 42;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(5, 271);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(70, 16);
+            this.label25.TabIndex = 41;
+            this.label25.Text = "Position :";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(6, 241);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(312, 23);
+            this.textBox2.TabIndex = 40;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(3, 222);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(70, 16);
+            this.label24.TabIndex = 39;
+            this.label24.Text = "Position :";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(7, 193);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(311, 23);
+            this.textBox1.TabIndex = 38;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(4, 174);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(94, 16);
+            this.label22.TabIndex = 37;
+            this.label22.Text = "Occupation :";
+            // 
+            // txtSpouseAge
+            // 
+            this.txtSpouseAge.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtSpouseAge.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSpouseAge.Location = new System.Drawing.Point(7, 145);
+            this.txtSpouseAge.Name = "txtSpouseAge";
+            this.txtSpouseAge.ReadOnly = true;
+            this.txtSpouseAge.Size = new System.Drawing.Size(311, 23);
+            this.txtSpouseAge.TabIndex = 36;
+            this.txtSpouseAge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(4, 126);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 16);
+            this.label15.TabIndex = 35;
+            this.label15.Text = "Age :";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(4, 72);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(103, 16);
+            this.label14.TabIndex = 34;
+            this.label14.Text = "Date of Birth :";
+            // 
+            // spousedob
+            // 
+            this.spousedob.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.spousedob.Location = new System.Drawing.Point(7, 91);
+            this.spousedob.Name = "spousedob";
+            this.spousedob.Size = new System.Drawing.Size(311, 22);
+            this.spousedob.TabIndex = 33;
+            this.spousedob.ValueChanged += new System.EventHandler(this.spousedob_ValueChanged_1);
+            // 
+            // txtspousename
+            // 
+            this.txtspousename.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtspousename.Location = new System.Drawing.Point(6, 42);
+            this.txtspousename.Name = "txtspousename";
+            this.txtspousename.Size = new System.Drawing.Size(312, 23);
+            this.txtspousename.TabIndex = 30;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(3, 23);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(108, 16);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "Spouse Name :";
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 597);
+            this.ClientSize = new System.Drawing.Size(1315, 597);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.cbohousetype);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtemail);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.spousedob);
-            this.Controls.Add(this.txtSpouseAge);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.txtspousename);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.txtbirthplace);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -586,6 +667,8 @@
             this.Load += new System.EventHandler(this.frmCustomer_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -619,12 +702,6 @@
         private System.Windows.Forms.ComboBox cboCivilStatus;
         private System.Windows.Forms.TextBox txtbirthplace;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtspousename;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker spousedob;
-        private System.Windows.Forms.TextBox txtSpouseAge;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtemail;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -640,5 +717,18 @@
         private System.Windows.Forms.TextBox txtcompanyname;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox cbohousetype;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtspousename;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtSpouseAge;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DateTimePicker spousedob;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label22;
     }
 }

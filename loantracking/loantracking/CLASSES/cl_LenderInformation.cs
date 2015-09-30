@@ -186,7 +186,7 @@ namespace loantracking.CLASSES
             //moneylender_info_id, moneylender_id, dateofbirth, birthplace, gender, civil_status,
             //email_add, TIN_NO, HOUSE_TYPE, occupation, position, company_name, comp_add, length_of_service
             sql = "";
-            sql = "INSERT INTO tmoneylender_information VALUES (NULL, " + this.propMoneyLender_id + ", '" + this.propDOB.Date.ToString("yyyy-MM-dd HH:mm") + "'," +
+            sql = "INSERT INTO tmoneylender_information VALUES (NULL, " + this.propmonenylenderInfoID + ", '" + this.propDOB.Date.ToString("yyyy-MM-dd HH:mm") + "'," +
                 " '" + this.propbirthplace + "', '" + this.propGender + "', '" + this.propCivilStatus + "', '" + this.propEmail + "', '" + this.propTIN_no + "', " +
                 " '" + this.propHouseType + "', '" + this.propOccupation + "', '" + this.propPosition + "', '" + propCompanyName + "', '" + this.propCompanyAdd + "'," +
                 " " + this.propLengthofService + ")";

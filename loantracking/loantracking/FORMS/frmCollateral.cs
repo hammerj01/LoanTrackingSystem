@@ -55,7 +55,7 @@ namespace loantracking.FORMS
 
             }
             else {
-                colla.INSERT_DATA();
+                colla.INSERT_DATACollateral();
                 MessageBox.Show(PUBLIC_VARS.saveData);
             }
             colla.LOAD_LSV(lsvCollateral);

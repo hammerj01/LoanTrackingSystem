@@ -13,10 +13,6 @@ D:\MY PROJECTS\loantracking\loantracking\bin\Debug\loantracking.pdb
 D:\MY PROJECTS\loantracking\loantracking\obj\Debug\loantracking.exe
 D:\MY PROJECTS\loantracking\loantracking\obj\Debug\loantracking.pdb
 D:\MY PROJECTS\loantracking\loantracking\obj\Debug\loantracking.FORMS.frmCollateral.resources
-D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.exe
-D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.pdb
-D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\bin\Debug\loantracking.exe
-D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\bin\Debug\loantracking.pdb
 D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\ResolveAssemblyReference.cache
 D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.FORMS.frmApplyLoan.resources
 D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.FORMS.frmCI.resources
@@ -28,3 +24,7 @@ D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracki
 D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.FORMS.mLoanTracking.resources
 D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.Properties.Resources.resources
 D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.csproj.GenerateResource.Cache
+D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\bin\Debug\loantracking.exe
+D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\bin\Debug\loantracking.pdb
+D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.exe
+D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.pdb

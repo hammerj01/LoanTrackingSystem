@@ -52,7 +52,7 @@
             this.lsvCollateral.GridLines = true;
             this.lsvCollateral.Location = new System.Drawing.Point(-1, -1);
             this.lsvCollateral.Name = "lsvCollateral";
-            this.lsvCollateral.Size = new System.Drawing.Size(834, 392);
+            this.lsvCollateral.Size = new System.Drawing.Size(834, 325);
             this.lsvCollateral.TabIndex = 10;
             this.lsvCollateral.UseCompatibleStateImageBehavior = false;
             this.lsvCollateral.View = System.Windows.Forms.View.Details;
@@ -88,7 +88,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(111, 45);
             this.btnDelete.TabIndex = 25;
-            this.btnDelete.Text = "&DELETE_SPOUSE";
+            this.btnDelete.Text = "&DELETE";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -115,16 +115,18 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(12, 420);
+            this.txtName.Location = new System.Drawing.Point(12, 365);
+            this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(384, 23);
+            this.txtName.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtName.Size = new System.Drawing.Size(384, 71);
             this.txtName.TabIndex = 22;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 397);
+            this.label5.Location = new System.Drawing.Point(9, 342);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(121, 16);
             this.label5.TabIndex = 21;
@@ -133,16 +135,18 @@
             // txtDescription
             // 
             this.txtDescription.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(402, 420);
+            this.txtDescription.Location = new System.Drawing.Point(402, 365);
+            this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(419, 23);
+            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDescription.Size = new System.Drawing.Size(419, 71);
             this.txtDescription.TabIndex = 28;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(399, 397);
+            this.label1.Location = new System.Drawing.Point(399, 342);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 16);
             this.label1.TabIndex = 27;

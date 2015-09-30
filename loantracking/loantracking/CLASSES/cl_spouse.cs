@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
+using loantracking.CLASSES;
 
 namespace loantracking
 {
-    public class cl_spouse
+    class cl_spouse : cl_moneylender
     {
         private int spouseID;
         private string spouseName;
@@ -12,15 +14,17 @@ namespace loantracking
         private string spouse_company;
         private string spouse_Occupation;
         private DateTime spouse_dob;
-    
+        private string spouse_position;
+        private string sql = "";
         public string propspousename
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.spouseName;
             }
             set
             {
+                this.spouseName = value;
             }
         }
 
@@ -28,10 +32,11 @@ namespace loantracking
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.spouse_dob;
             }
             set
             {
+                this.spouse_dob = value;
             }
         }
 
@@ -39,10 +44,11 @@ namespace loantracking
         {
             get
             {
-                throw new System.NotImplementedException();
+                return spouse_Occupation;
             }
             set
             {
+                this.spouse_Occupation = value;
             }
         }
 
@@ -50,10 +56,11 @@ namespace loantracking
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.spouse_age;
             }
             set
             {
+                this.spouse_age = value;
             }
         }
 
@@ -61,10 +68,11 @@ namespace loantracking
         {
             get
             {
-                throw new System.NotImplementedException();
+                return spouse_company;
             }
             set
             {
+                this.spouse_company = value;
             }
         }
 
@@ -72,31 +80,74 @@ namespace loantracking
         {
             get
             {
-                throw new System.NotImplementedException();
+                return this.spouseID;
             }
             set
             {
+                this.spouseID = value;
             }
+        }
+        public string propsPosition
+        {
+            get { return this.spouse_position; }
+            set { this.spouse_position = value; }
         }
     
         public void INSERT_SPOUSE()
         {
-            throw new System.NotImplementedException();
+            sql = "";
+            //spouse_id, moneylender_id, spouse_name, s_age, dob, occupation, company, position
+            //tspouse
+
+            sql = "INSERT INTO tspouse VALUES(NULL, " + this.propLenderID + ", '" + this.propspousename + "', " + this.props_age + "," +
+                  " '" + this.propsDOB + "','" + this.propspouseOcc + "', '" + this.propsCompany + "','" + this.propsPosition + "')";
+            PUBLIC_VARS.d.execute(sql);
+            PUBLIC_VARS.d.reader.Close();
+
         }
 
-        public void UPDATE_SPOUSE()
+        public void UPDATE_SPOUSE(int lenderID)
         {
-            throw new System.NotImplementedException();
+            sql = "";
+            sql = "UPDATE TSPOUSE SET spouse_name = '" + this.propspousename + "', s_age = " + this.props_age + "," +
+                  " dob = '" + this.propsDOB + "', occupation = '" + this.propspouseOcc + "', company = '" + this.propsCompany + "'," +
+                  " position = '" + this.propsPosition + "' WHERE moneylender_id = " + lenderID;
+            PUBLIC_VARS.d.execute(sql);
+            PUBLIC_VARS.d.reader.Close();
+
         }
 
         public void DELETE_SPOUSE()
         {
-            throw new System.NotImplementedException();
+            sql = "";
+            sql = "DELETE from tspouse where spouse_id = " + this.propspouseID;
+            PUBLIC_VARS.d.execute(sql);
+            PUBLIC_VARS.d.reader.Close();
         }
 
-        public void LOAD_TOLISTSPOUSE()
+        public void LOAD_TOLISTSPOUSE(int spouseID)
         {
-            throw new System.NotImplementedException();
+            sql = "";
+            sql = "SELECT * tspouse where spouse_id = " + spouseID;
+            PUBLIC_VARS.d.execute(sql);
+            try
+            {
+                if (PUBLIC_VARS.d.reader.HasRows){
+                    while (PUBLIC_VARS.d.reader.Read()){
+                        //spouse_id, moneylender_id, spouse_name, s_age, dob, occupation, company, position
+                        //tspouse
+
+                        propspouseID = Convert.ToInt32(PUBLIC_VARS.d.reader["spouse_id"].ToString());
+                        propMoneyLender_id = Convert.ToInt32(PUBLIC_VARS.d.reader["moneylender_id"].ToString());
+                        propspousename = PUBLIC_VARS.d.reader["spouse_name"].ToString();
+                        props_age = Convert.ToInt32(PUBLIC_VARS.d.reader["s_age"].ToString());
+                        propsDOB = DateTime.Parse(PUBLIC_VARS.d.reader["dob"].ToString());
+                    }
+                
+                }
+            }
+            catch (Exception e) { MessageBox.Show(e.Message); }
+            finally { PUBLIC_VARS.d.reader.Close(); }
         }
 
         public void LOAD_TOFIELDSPOUSE()
