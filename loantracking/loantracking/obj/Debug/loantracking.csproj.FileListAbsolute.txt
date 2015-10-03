@@ -28,3 +28,4 @@ D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\bin\Debug\loantracki
 D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\bin\Debug\loantracking.pdb
 D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.exe
 D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.pdb
+D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.FORMS.frmUserLogin.resources

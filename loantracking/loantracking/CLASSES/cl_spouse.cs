@@ -109,7 +109,7 @@ namespace loantracking
         public void UPDATE_SPOUSE(int lenderID)
         {
             sql = "";
-            sql = "UPDATE TSPOUSE SET spouse_name = '" + this.propspousename + "', s_age = " + this.props_age + "," +
+            sql = "UPDATE_LENDER_INFORM TSPOUSE SET spouse_name = '" + this.propspousename + "', s_age = " + this.props_age + "," +
                   " dob = '" + this.propsDOB + "', occupation = '" + this.propspouseOcc + "', company = '" + this.propsCompany + "'," +
                   " position = '" + this.propsPosition + "' WHERE moneylender_id = " + lenderID;
             PUBLIC_VARS.d.execute(sql);

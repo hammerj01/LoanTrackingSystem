@@ -24,7 +24,7 @@ namespace loantracking.CLASSES
 
         public void UPDATE_DATAs()
         {
-            sql = "UPDATE TCI SET FNAME = '" + propfname + "', LNAME = '" + proplname + "',CI_ADDRESS = '" + propAddress + "'," +
+            sql = "UPDATE_LENDER_INFORM TCI SET FNAME = '" + propfname + "', LNAME = '" + proplname + "',CI_ADDRESS = '" + propAddress + "'," +
                    "CI_TEL_NO = " + propContact_no + " WHERE CI_ID = " + propCI_id;
             PUBLIC_VARS.d.execute(sql);
             PUBLIC_VARS.d.reader.Close();

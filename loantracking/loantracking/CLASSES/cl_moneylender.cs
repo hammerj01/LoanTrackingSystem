@@ -146,7 +146,7 @@ namespace loantracking.CLASSES
         public void UPDATE_DATA(int moneylender_id)
         {
             string sql = "";
-            sql = "UPDATE tmoneylender SET address = '" + propAddress + "'," +
+            sql = "UPDATE_LENDER_INFORM tmoneylender SET address = '" + propAddress + "'," +
                   " FNAME = '" + propfname + "', lname = '" + proplname + "', " + 
                   " mi = '" + propMI + "', age = " + propAge + ",  credit_limit = " + propCreditLimit + ", " +
                   " contact_no = '"  + propContact_no + "', lenderID = '" + propLenderID + "' " +
@@ -248,8 +248,10 @@ namespace loantracking.CLASSES
             }
             catch (Exception e) { MessageBox.Show(e.Message); }
             finally { PUBLIC_VARS.d.reader.Close(); }
-
-        
+      
         }
+
+       
+
     }
 }

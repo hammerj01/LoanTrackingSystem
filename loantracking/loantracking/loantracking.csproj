@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CLASSES\cl_loans.cs" />
+    <Compile Include="CLASSES\cl_logIn.cs" />
     <Compile Include="CLASSES\cl_moneylender.cs" />
     <Compile Include="CLASSES\cl_myCI.cs" />
     <Compile Include="CLASSES\db.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="CLASSES\cl_collateral.cs" />
     <Compile Include="CLASSES\cl_LenderInformation.cs" />
     <Compile Include="CLASSES\cl_spouse.cs" />
+    <Compile Include="cl_lender_inform.cs" />
     <Compile Include="FORMS\frmApplyLoan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +105,12 @@
     <Compile Include="FORMS\frmPayments.Designer.cs">
       <DependentUpon>frmPayments.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORMS\frmUserLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmUserLogin.Designer.cs">
+      <DependentUpon>frmUserLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORMS\mLoanTracking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +147,10 @@
       <DependentUpon>frmPayments.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmUserLogin.resx">
+      <DependentUpon>frmUserLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORMS\mLoanTracking.resx">
       <DependentUpon>mLoanTracking.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -152,7 +164,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="CLASSES\ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

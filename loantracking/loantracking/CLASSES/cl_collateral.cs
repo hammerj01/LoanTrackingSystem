@@ -74,7 +74,7 @@ namespace loantracking
         {
             //collateral_id, collateral_name, description
             string sql = "";
-            sql = "UPDATE tcollateral set collateral_name = '" + propCollateral_name + "'," +
+            sql = "UPDATE_LENDER_INFORM tcollateral set collateral_name = '" + propCollateral_name + "'," +
                   "collateral_description = '" + propCollateral_description + "' WHERE collateral_id = " + propCollateral_id;
             PUBLIC_VARS.d.execute(sql);
             PUBLIC_VARS.d.reader.Close();

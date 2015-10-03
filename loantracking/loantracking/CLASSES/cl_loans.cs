@@ -111,7 +111,7 @@ namespace loantracking.CLASSES
         public void UPDATE_DATA()
         {
             string sql = "";
-            sql = "UPDATE tloan SET LOAn_type ='" + propLoan_type + "', loan_description = '" + propLoand_desc + "' WHERE loan_id = " + propLoan_id;
+            sql = "UPDATE_LENDER_INFORM tloan SET LOAn_type ='" + propLoan_type + "', loan_description = '" + propLoand_desc + "' WHERE loan_id = " + propLoan_id;
             PUBLIC_VARS.d.execute(sql);
             PUBLIC_VARS.d.reader.Close();
         }

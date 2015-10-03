@@ -26,7 +26,7 @@ namespace loantracking
             PUBLIC_VARS.d._db = "dbtracking";
 
             if(PUBLIC_VARS.d.connect()){
-                mLoanTracking frm = new mLoanTracking();
+                frmUserLogin frm = new frmUserLogin();
                 frm.ShowDialog();
             }
 
