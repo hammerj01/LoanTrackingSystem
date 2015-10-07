@@ -146,7 +146,7 @@ namespace loantracking.CLASSES
         public void UPDATE_DATA(int moneylender_id)
         {
             string sql = "";
-            sql = "UPDATE_LENDER_INFORM tmoneylender SET address = '" + propAddress + "'," +
+            sql = "UPDATE tmoneylender SET address = '" + propAddress + "'," +
                   " FNAME = '" + propfname + "', lname = '" + proplname + "', " + 
                   " mi = '" + propMI + "', age = " + propAge + ",  credit_limit = " + propCreditLimit + ", " +
                   " contact_no = '"  + propContact_no + "', lenderID = '" + propLenderID + "' " +
@@ -231,6 +231,41 @@ namespace loantracking.CLASSES
             finally { PUBLIC_VARS.d.reader.Close(); }
         }
 
+
+        public void LOADTOFIELDSLenderID(string MLT_ID)
+        {
+            string sql = "";
+
+            sql = "SELECT * FROM tmoneylender WHERE  lenderID = '" + MLT_ID + "'";
+            PUBLIC_VARS.d.execute(sql);
+            try
+            {
+                //moneylender_id, fname, lname, mi, address, age, date_lender, credit_limit
+                if (PUBLIC_VARS.d.reader.HasRows)
+                {
+                    while (PUBLIC_VARS.d.reader.Read())
+                    {
+                        propMoneyLender_id = Convert.ToInt32(PUBLIC_VARS.d.reader["moneylender_id"].ToString());
+                        propfname = PUBLIC_VARS.d.reader["fname"].ToString();
+                        proplname = PUBLIC_VARS.d.reader["lname"].ToString();
+                        propMI = PUBLIC_VARS.d.reader["mi"].ToString();
+                        propAddress = PUBLIC_VARS.d.reader["address"].ToString();
+                        propAge = Convert.ToInt32(PUBLIC_VARS.d.reader["age"].ToString());
+                        //propDate =  Convert.ToDateTime(PUBLIC_VARS.d.reader["date_lender"].ToString()).ToShortDateString();
+                        propCreditLimit = Convert.ToDouble(PUBLIC_VARS.d.reader["credit_limit"].ToString());
+                        propContact_no = PUBLIC_VARS.d.reader["contact_no"].ToString();
+                        propLenderID = PUBLIC_VARS.d.reader["lenderID"].ToString();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { PUBLIC_VARS.d.reader.Close(); }
+        }
+
         public void SearchLenderByName(string txt, ListView lsv) {
             lsv.Items.Clear();
             string sql = "";
@@ -251,6 +286,52 @@ namespace loantracking.CLASSES
       
         }
 
+        public void Search_MONEYLENDER(ListView lsv,string txt)
+        {
+            lsv.Items.Clear();
+            string sql = "";
+
+            if (txt == "view"){
+                sql = "SELECT * FROM tmoneylender";
+            }
+            else
+            { sql = "SELECT * FROM tmoneylender WHERE lname = '" + txt + "'";}
+            
+           
+            PUBLIC_VARS.d.execute(sql);
+            //moneylender_id, fname, lname, mi, address, age, date_lender, credit_limit
+            try
+            {
+                if (PUBLIC_VARS.d.reader.HasRows)
+                {
+                    while (PUBLIC_VARS.d.reader.Read())
+                    {
+                        int index = lsv.Items.Count;
+                        lsv.Items.Add(PUBLIC_VARS.d.reader["moneylender_id"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["lenderID"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["fname"].ToString() + " " + PUBLIC_VARS.d.reader["mi"].ToString() + " " + PUBLIC_VARS.d.reader["lname"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["address"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["age"].ToString());
+
+                        //MessageBox.Show(Convert.ToDateTime(PUBLIC_VARS.d.reader["date_lender"].ToString()).ToShortDateString().ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["credit_limit"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["contact_no"].ToString());
+                        lsv.Items[index].SubItems.Add(Convert.ToDateTime(PUBLIC_VARS.d.reader["date_lender"].ToString()).ToShortDateString().ToString());
+                        //lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["lenderID"].ToString());
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+                PUBLIC_VARS.d.reader.Close();
+            }
+        }
        
 
     }

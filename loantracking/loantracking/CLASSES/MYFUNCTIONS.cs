@@ -9,7 +9,6 @@ namespace loantracking.CLASSES
 {
     class MYFUNCTIONS
     {
-
         //populate data in listview
         public void PopulateListView(ListView lsv, string sql)
         {
@@ -47,6 +46,26 @@ namespace loantracking.CLASSES
             }
             PUBLIC_VARS.d.reader.Close();
         }
+
+        public Int64 autoUserID() {
+           Int64 strID =0;
+           string sql = "select * from tcounter where counterNo = 1";
+            PUBLIC_VARS.d.execute(sql);
+            if (PUBLIC_VARS.d.reader.HasRows) {
+                PUBLIC_VARS.d.reader.Read();
+                strID = Convert.ToInt64(PUBLIC_VARS.d.reader["counterValue"].ToString());
+               PUBLIC_VARS.d.reader.Close();
+            }
+            return strID;
+            
+        }
+        public void InsertCounterNo(Int64 value) {
+            string sql = "";
+            sql = "UPDATE tcounter set counterValue = " + value;
+            PUBLIC_VARS.d.execute(sql);
+            PUBLIC_VARS.d.reader.Close();
+        
+        }     
 
     }
 }

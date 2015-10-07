@@ -24,7 +24,8 @@ namespace loantracking.FORMS
  
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-            if(PUBLIC_VARS.EDITMODE == true){
+            if (PUBLIC_VARS.EDITMODE == true)
+            {
                 cl_moneylender cm = new cl_moneylender();
                 cl_LenderInformation c_info = new cl_LenderInformation();
                 cm.LOADTOFIELDS(mlt);
@@ -32,7 +33,7 @@ namespace loantracking.FORMS
                 txtFname.Text = cm.propfname;
                 txtLname.Text = cm.proplname;
                 txtMI.Text = cm.propMI;
-                txtAge.Text =cm.propAge.ToString();
+                txtAge.Text = cm.propAge.ToString();
                 txtTin_no.Text = cm.propCreditLimit.ToString();
                 txtContactNo.Text = cm.propContact_no;
                 txtMoneyLenderID.Text = cm.propLenderID;
@@ -50,7 +51,8 @@ namespace loantracking.FORMS
                 txtcompanyaddress.Text = c_info.propCompanyAdd;
                 txtcompanyname.Text = c_info.propCompanyName;
 
-                if(c_info.propCivilStatus != "Single" ){
+                if (c_info.propCivilStatus != "Single")
+                {
                     cl_spouse sp = new cl_spouse();
                     sp.LOAD_TOFIELDSPOUSE(mlt);
                     txtspousename.Text = sp.propspousename;
@@ -59,13 +61,29 @@ namespace loantracking.FORMS
                     txtsCompany.Text = sp.propsCompany;
                     txtSoCCu.Text = sp.propspouseOcc;
                 }
-                
-  
+
+
+            }
+            else
+            { 
+
+                MYFUNCTIONS f = new MYFUNCTIONS();
+                DateTime dt = DateTime.Today;
+                Int64 dx =f.autoUserID()+1;
+                txtMoneyLenderID.Text =dt.Year.ToString("X2") + String.Format("{0:D5}", dx);
             }
         }
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
+            
+            if(txtAge.Text == "" || txtContactNo.Text == "" || txtFname.Text == "" || txtLname.Text =="" || txtAddress.Text == "" || txtContactNo.Text == ""){
+                MessageBox.Show("Please supply the required fields.");
+                return;
+            }
+            if(txtlengthservice.Text == ""){
+                txtlengthservice.Text = "0";
+            }
             cl_moneylender cMoneyLender = new cl_moneylender();
             cl_LenderInformation l_Info = new cl_LenderInformation();
             cMoneyLender.propfname = txtFname.Text;
@@ -96,8 +114,10 @@ namespace loantracking.FORMS
             sp.propspouseOcc = txtSoCCu.Text;
             sp.propsCompany =txtsCompany.Text;
             sp.propsPosition=txtspouseP.Text;
-            sp.props_age = Convert.ToInt32(txtSpouseAge.Text);
-
+            if (cboCivilStatus.Text != "Single")
+            {
+               sp.props_age = Convert.ToInt32(txtSpouseAge.Text);
+            }
             if (cMoneyLender.propAge < 18 )
             {
                 MessageBox.Show("Age should not lesser than 18");
@@ -130,7 +150,11 @@ namespace loantracking.FORMS
                     sp.INSERT_SPOUSE();
                 
                 }
+                MYFUNCTIONS f = new MYFUNCTIONS();
+                Int64 dx = f.autoUserID() + 1;
                 
+                f.InsertCounterNo(dx);
+
                 MessageBox.Show(PUBLIC_VARS.saveData);
 
             }

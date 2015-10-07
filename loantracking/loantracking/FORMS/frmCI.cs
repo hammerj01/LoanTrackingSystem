@@ -66,10 +66,20 @@ namespace loantracking.FORMS
         private void btnDelete_Click(object sender, EventArgs e)
         {
             cl_myCI ct = new cl_myCI();
-            ct.propCI_id = Convert.ToInt32(lsvCI.SelectedItems[0].Text.ToString());
-            ci.DELETE_DATAs();
-            MessageBox.Show(PUBLIC_VARS.deleteData);
-            ct.LOAD_LISTs(lsvCI);
+           
+
+            DialogResult result1 = MessageBox.Show("Are you sure you want to delete entry?",
+"Important Question",
+MessageBoxButtons.YesNo);
+            if (result1 == DialogResult.Yes)
+            {
+                ct.propCI_id = Convert.ToInt32(lsvCI.SelectedItems[0].Text.ToString());
+                ci.DELETE_DATAs();
+                MessageBox.Show(PUBLIC_VARS.deleteData);
+                ct.LOAD_LISTs(lsvCI);
+            }
+            
+
         }
 
         private void lsvCI_Click(object sender, EventArgs e)

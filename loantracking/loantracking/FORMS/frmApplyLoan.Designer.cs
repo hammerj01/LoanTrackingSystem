@@ -41,9 +41,10 @@
             this.lsvPaymentSched = new System.Windows.Forms.ListView();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.btnProcess = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtmonthstopay = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lsvLender = new System.Windows.Forms.ListView();
             this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
@@ -52,6 +53,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtNetAmount = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtMonthlyDue = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtlenderID
@@ -68,9 +71,9 @@
             this.label5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(11, 32);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 16);
+            this.label5.Size = new System.Drawing.Size(96, 16);
             this.label5.TabIndex = 23;
-            this.label5.Text = "Lender ID :";
+            this.label5.Text = "Borrower ID :";
             // 
             // textBox1
             // 
@@ -118,9 +121,10 @@
             this.txtAmountApplied.Name = "txtAmountApplied";
             this.txtAmountApplied.Size = new System.Drawing.Size(256, 40);
             this.txtAmountApplied.TabIndex = 30;
-            this.txtAmountApplied.Text = "54";
+            this.txtAmountApplied.Text = "0.0";
             this.txtAmountApplied.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtAmountApplied.MouseLeave += new System.EventHandler(this.txtAmountApplied_MouseLeave);
+            this.txtAmountApplied.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmountApplied_KeyPress);
             // 
             // label3
             // 
@@ -135,11 +139,12 @@
             // lbldatenow
             // 
             this.lbldatenow.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldatenow.Location = new System.Drawing.Point(504, 9);
+            this.lbldatenow.Location = new System.Drawing.Point(370, 9);
             this.lbldatenow.Name = "lbldatenow";
-            this.lbldatenow.Size = new System.Drawing.Size(172, 30);
+            this.lbldatenow.Size = new System.Drawing.Size(306, 30);
             this.lbldatenow.TabIndex = 31;
             this.lbldatenow.Text = "Date now";
+            this.lbldatenow.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // btnGenerate
             // 
@@ -157,6 +162,7 @@
             this.lsvPaymentSched.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2,
             this.columnHeader3,
+            this.columnHeader1,
             this.columnHeader4});
             this.lsvPaymentSched.FullRowSelect = true;
             this.lsvPaymentSched.GridLines = true;
@@ -174,13 +180,21 @@
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Payment Type";
-            this.columnHeader3.Width = 200;
+            this.columnHeader3.Text = "Monthly Due";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader3.Width = 170;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Principal";
+            this.columnHeader1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader1.Width = 170;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Status";
-            this.columnHeader4.Width = 200;
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 100;
             // 
             // btnProcess
             // 
@@ -193,13 +207,13 @@
             this.btnProcess.UseVisualStyleBackColor = true;
             this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
             // 
-            // textBox4
+            // txtmonthstopay
             // 
-            this.textBox4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(281, 116);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(384, 23);
-            this.textBox4.TabIndex = 36;
+            this.txtmonthstopay.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtmonthstopay.Location = new System.Drawing.Point(281, 116);
+            this.txtmonthstopay.Name = "txtmonthstopay";
+            this.txtmonthstopay.Size = new System.Drawing.Size(384, 23);
+            this.txtmonthstopay.TabIndex = 36;
             // 
             // label4
             // 
@@ -207,9 +221,9 @@
             this.label4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(278, 89);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 16);
+            this.label4.Size = new System.Drawing.Size(115, 16);
             this.label4.TabIndex = 35;
-            this.label4.Text = "Collateral Name :";
+            this.label4.Text = "Months to Pay :";
             // 
             // lsvLender
             // 
@@ -218,12 +232,13 @@
             this.columnHeader6});
             this.lsvLender.FullRowSelect = true;
             this.lsvLender.GridLines = true;
-            this.lsvLender.Location = new System.Drawing.Point(12, 542);
+            this.lsvLender.Location = new System.Drawing.Point(-5, 515);
             this.lsvLender.Name = "lsvLender";
             this.lsvLender.Size = new System.Drawing.Size(384, 273);
             this.lsvLender.TabIndex = 39;
             this.lsvLender.UseCompatibleStateImageBehavior = false;
             this.lsvLender.View = System.Windows.Forms.View.Details;
+            this.lsvLender.Visible = false;
             this.lsvLender.SelectedIndexChanged += new System.EventHandler(this.lsvLender_SelectedIndexChanged);
             this.lsvLender.DoubleClick += new System.EventHandler(this.lsvLender_DoubleClick);
             // 
@@ -277,16 +292,39 @@
             this.label8.TabIndex = 42;
             this.label8.Text = "Net Amount :";
             // 
+            // txtMonthlyDue
+            // 
+            this.txtMonthlyDue.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMonthlyDue.Location = new System.Drawing.Point(281, 247);
+            this.txtMonthlyDue.Name = "txtMonthlyDue";
+            this.txtMonthlyDue.Size = new System.Drawing.Size(384, 40);
+            this.txtMonthlyDue.TabIndex = 45;
+            this.txtMonthlyDue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMonthlyDue.TextChanged += new System.EventHandler(this.txtMonthlyDue_TextChanged);
+            this.txtMonthlyDue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonthlyDue_KeyPress);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(278, 224);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 16);
+            this.label6.TabIndex = 44;
+            this.label6.Text = "Monthly Due :";
+            // 
             // frmApplyLoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 671);
+            this.Controls.Add(this.txtMonthlyDue);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtNetAmount);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtMonthsNo);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtmonthstopay);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnProcess);
             this.Controls.Add(this.lsvPaymentSched);
@@ -326,7 +364,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button btnProcess;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtmonthstopay;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListView lsvLender;
         private System.Windows.Forms.ColumnHeader columnHeader5;
@@ -335,5 +373,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtNetAmount;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtMonthlyDue;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

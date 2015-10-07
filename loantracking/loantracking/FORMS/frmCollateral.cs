@@ -63,12 +63,17 @@ namespace loantracking.FORMS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            cl_collateral colla = new cl_collateral();
-            int x = Convert.ToInt32(lsvCollateral.SelectedItems[0].Text.ToString());
-            colla.propCollateral_id = x;
-            colla.DELETE_DATA();
-            MessageBox.Show(PUBLIC_VARS.deleteData);
-            colla.LOAD_LSV(lsvCollateral);
+            DialogResult res = MessageBox.Show("Are you sure you want to delete this record?", "delete", MessageBoxButtons.YesNo);
+
+            if (res == DialogResult.Yes)
+            {
+                cl_collateral colla = new cl_collateral();
+                int x = Convert.ToInt32(lsvCollateral.SelectedItems[0].Text.ToString());
+                colla.propCollateral_id = x;
+                colla.DELETE_DATA();
+                MessageBox.Show(PUBLIC_VARS.deleteData);
+                colla.LOAD_LSV(lsvCollateral);
+            }
         }
     }
 }

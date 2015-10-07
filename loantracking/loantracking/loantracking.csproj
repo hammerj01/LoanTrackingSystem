@@ -52,17 +52,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CLASSES\cl_borrower_loan.cs" />
     <Compile Include="CLASSES\cl_loans.cs" />
     <Compile Include="CLASSES\cl_logIn.cs" />
     <Compile Include="CLASSES\cl_moneylender.cs" />
     <Compile Include="CLASSES\cl_myCI.cs" />
+    <Compile Include="CLASSES\cl_payment.cs" />
+    <Compile Include="CLASSES\cl_Penalty.cs" />
     <Compile Include="CLASSES\db.cs" />
     <Compile Include="CLASSES\MYFUNCTIONS.cs" />
     <Compile Include="CLASSES\PUBLIC_VAR.CS" />
     <Compile Include="CLASSES\cl_collateral.cs" />
     <Compile Include="CLASSES\cl_LenderInformation.cs" />
     <Compile Include="CLASSES\cl_spouse.cs" />
-    <Compile Include="cl_lender_inform.cs" />
+    <Compile Include="CLASSES\cl_lender_inform.cs" />
+    <Compile Include="FORMS\frmAccountPayable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmAccountPayable.Designer.cs">
+      <DependentUpon>frmAccountPayable.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORMS\frmApplyLoan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,11 +96,23 @@
     <Compile Include="FORMS\frmCustomer.Designer.cs">
       <DependentUpon>frmCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORMS\frmDetailsBorrower.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmDetailsBorrower.Designer.cs">
+      <DependentUpon>frmDetailsBorrower.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORMS\frmListMoneyLender.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FORMS\frmListMoneyLender.Designer.cs">
       <DependentUpon>frmListMoneyLender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmListofBorrower.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmListofBorrower.Designer.cs">
+      <DependentUpon>frmListofBorrower.cs</DependentUpon>
     </Compile>
     <Compile Include="FORMS\frmLoanType.cs">
       <SubType>Form</SubType>
@@ -104,6 +125,12 @@
     </Compile>
     <Compile Include="FORMS\frmPayments.Designer.cs">
       <DependentUpon>frmPayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\frmPenalty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\frmPenalty.Designer.cs">
+      <DependentUpon>frmPenalty.cs</DependentUpon>
     </Compile>
     <Compile Include="FORMS\frmUserLogin.cs">
       <SubType>Form</SubType>
@@ -119,6 +146,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FORMS\frmAccountPayable.resx">
+      <DependentUpon>frmAccountPayable.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORMS\frmApplyLoan.resx">
       <DependentUpon>frmApplyLoan.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -135,8 +166,16 @@
       <DependentUpon>frmCustomer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmDetailsBorrower.resx">
+      <DependentUpon>frmDetailsBorrower.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORMS\frmListMoneyLender.resx">
       <DependentUpon>frmListMoneyLender.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmListofBorrower.resx">
+      <DependentUpon>frmListofBorrower.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\frmLoanType.resx">
@@ -145,6 +184,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\frmPayments.resx">
       <DependentUpon>frmPayments.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\frmPenalty.resx">
+      <DependentUpon>frmPenalty.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\frmUserLogin.resx">

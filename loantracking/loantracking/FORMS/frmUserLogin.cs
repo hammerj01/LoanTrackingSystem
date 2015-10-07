@@ -21,15 +21,20 @@ namespace loantracking.FORMS
         {
             //user_id, username, password, utype
             //string type = "";
+            if (txtpassword.Text == "" || txtusername.Text == "")
+            {
+                MessageBox.Show("Please supply the missing fields.");
+                return;
+            }
             bool s = false;
             string sql = "SELECT * from tuser where username= '" + this.txtusername.Text + "' && password = '" +this.txtpassword.Text + "' && utype = 'administrator'";
             PUBLIC_VARS.d.execute(sql);
+           
+
             if (PUBLIC_VARS.d.reader.HasRows)
             {
                 PUBLIC_VARS.d.reader.Read();
-              
                         s = true;
-                  
             }
             PUBLIC_VARS.d.reader.Close();
             if (s)

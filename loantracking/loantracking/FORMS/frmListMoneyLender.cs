@@ -53,12 +53,38 @@ namespace loantracking.FORMS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            PUBLIC_VARS.activeID = Convert.ToInt32(lsvMoneyLender.SelectedItems[0].Text.ToString());
-            cl_moneylender cMoneyLender = new cl_moneylender();
-            cMoneyLender.DELETE_DATA(PUBLIC_VARS.activeID);
-            MessageBox.Show(PUBLIC_VARS.deleteData);
+           
 
-            cMoneyLender.LOAD_MONEYLENDER(lsvMoneyLender);
+            if (lsvMoneyLender.SelectedItems.Count > 0)
+            {
+
+                PUBLIC_VARS.activeID = Convert.ToInt32(lsvMoneyLender.SelectedItems[0].Text.ToString());
+                cl_moneylender cMoneyLender = new cl_moneylender();
+                DialogResult result1 = MessageBox.Show("Are you sure you want to delete entry?", "delete", MessageBoxButtons.YesNo);
+                if (result1 == DialogResult.Yes)
+                {
+                    cMoneyLender.DELETE_DATA(PUBLIC_VARS.activeID);
+                    MessageBox.Show(PUBLIC_VARS.deleteData);
+                }
+                cMoneyLender.LOAD_MONEYLENDER(lsvMoneyLender);
+            }
+            else {
+                MessageBox.Show("No records to be deleted.");
+            }
+            
+    
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+             cl_moneylender l = new cl_moneylender();
+             l.Search_MONEYLENDER(lsvMoneyLender,textBox1.Text);
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            cl_moneylender l = new cl_moneylender();
+            l.Search_MONEYLENDER(lsvMoneyLender, "view");
         }
     }
 }

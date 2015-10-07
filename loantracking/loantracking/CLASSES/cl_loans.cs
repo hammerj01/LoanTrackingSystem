@@ -12,7 +12,9 @@ namespace loantracking.CLASSES
         private int loan_id;
         private string loan_type;
         private string loan_desc;
-    
+      
+
+
         public int propLoan_id
         {
             get

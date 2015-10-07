@@ -145,7 +145,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(111, 45);
             this.btnDelete.TabIndex = 15;
-            this.btnDelete.Text = "&DELETE_SPOUSE";
+            this.btnDelete.Text = "&DELETE";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -164,7 +164,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lsvLoan);
             this.Name = "frmLoanType";
-            this.Text = "frmLoanType";
+            this.Text = "LoanType";
             this.Load += new System.EventHandler(this.frmLoanType_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

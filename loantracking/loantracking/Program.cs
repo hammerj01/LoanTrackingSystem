@@ -26,7 +26,7 @@ namespace loantracking
             PUBLIC_VARS.d._db = "dbtracking";
 
             if(PUBLIC_VARS.d.connect()){
-                frmUserLogin frm = new frmUserLogin();
+                frmUserLogin frm = new frmUserLogin();   //creating instance or object new = name of instance frm
                 frm.ShowDialog();
             }
 

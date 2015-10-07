@@ -34,11 +34,15 @@
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnView = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lsvMoneyLender
@@ -70,7 +74,7 @@
             // 
             // columnHeader8
             // 
-            this.columnHeader8.Text = "Lender ID";
+            this.columnHeader8.Text = "Borrower ID";
             this.columnHeader8.Width = 120;
             // 
             // columnHeader2
@@ -87,11 +91,6 @@
             // 
             this.columnHeader4.Text = "Age";
             // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Date";
-            this.columnHeader5.Width = 120;
-            // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Credit Limit";
@@ -103,9 +102,14 @@
             this.columnHeader7.Text = "Contact No.";
             this.columnHeader7.Width = 100;
             // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Date";
+            this.columnHeader5.Width = 120;
+            // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(802, 483);
+            this.btnAdd.Location = new System.Drawing.Point(930, 483);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(122, 42);
             this.btnAdd.TabIndex = 1;
@@ -121,20 +125,62 @@
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "&DELETE";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 498);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Search By Lastname :";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(435, 498);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "&Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(129, 498);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(300, 20);
+            this.textBox1.TabIndex = 5;
+            // 
+            // btnView
+            // 
+            this.btnView.Location = new System.Drawing.Point(516, 498);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(75, 23);
+            this.btnView.TabIndex = 6;
+            this.btnView.Text = "&View";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // frmListMoneyLender
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 537);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnView);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lsvMoneyLender);
             this.Name = "frmListMoneyLender";
-            this.Text = "frmListMoneyLender";
+            this.Text = "Borrower\'s Entry";
             this.Load += new System.EventHandler(this.frmListMoneyLender_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -151,5 +197,9 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnView;
     }
 }

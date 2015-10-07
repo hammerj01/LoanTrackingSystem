@@ -167,7 +167,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lsvCollateral);
             this.Name = "frmCollateral";
-            this.Text = "frmCollateral";
+            this.Text = "Collateral";
             this.Load += new System.EventHandler(this.frmCollateral_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

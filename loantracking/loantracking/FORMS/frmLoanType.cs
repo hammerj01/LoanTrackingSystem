@@ -80,9 +80,16 @@ namespace loantracking.FORMS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            DialogResult res = MessageBox.Show("Are you sure you want to delete this record?","delete",MessageBoxButtons.YesNo);
+
+            if (res == DialogResult.Yes){
             PUBLIC_VARS.activeID = Convert.ToInt32(lsvLoan.SelectedItems[0].Text.ToString());
             l.DELETE_DATA(PUBLIC_VARS.activeID);
             l.LOADAllFields(this.lsvLoan);
+            }
+
+
+
         }
     }
 }
