@@ -31,7 +31,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnDetails = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -42,20 +41,25 @@
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(390, 445);
+            this.button1.Location = new System.Drawing.Point(1106, 412);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 54;
             this.button1.Text = "&View";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(390, 415);
+            this.dateTimePicker1.Location = new System.Drawing.Point(900, 411);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 53;
@@ -63,24 +67,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(387, 399);
+            this.label1.Location = new System.Drawing.Point(897, 395);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 52;
             this.label1.Text = "Search by Date :";
             // 
-            // btnDetails
-            // 
-            this.btnDetails.Location = new System.Drawing.Point(940, 400);
-            this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(75, 23);
-            this.btnDetails.TabIndex = 51;
-            this.btnDetails.Text = "&Details";
-            this.btnDetails.UseVisualStyleBackColor = true;
-            // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(100, 445);
+            this.btnView.Location = new System.Drawing.Point(413, 415);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(75, 23);
             this.btnView.TabIndex = 50;
@@ -96,7 +91,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(19, 445);
+            this.btnSearch.Location = new System.Drawing.Point(332, 415);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 48;
@@ -119,12 +114,14 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
-            this.columnHeader5});
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7});
             this.lsvBCollection.FullRowSelect = true;
             this.lsvBCollection.GridLines = true;
             this.lsvBCollection.Location = new System.Drawing.Point(11, 12);
             this.lsvBCollection.Name = "lsvBCollection";
-            this.lsvBCollection.Size = new System.Drawing.Size(1017, 375);
+            this.lsvBCollection.Size = new System.Drawing.Size(1170, 375);
             this.lsvBCollection.TabIndex = 46;
             this.lsvBCollection.UseCompatibleStateImageBehavior = false;
             this.lsvBCollection.View = System.Windows.Forms.View.Details;
@@ -155,15 +152,47 @@
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader5.Width = 140;
             // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Penalty";
+            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader6.Width = 160;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Date";
+            this.columnHeader7.Width = 150;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(542, 411);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 13);
+            this.label3.TabIndex = 55;
+            this.label3.Text = "Search by Date :";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(553, 451);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(143, 20);
+            this.label4.TabIndex = 56;
+            this.label4.Text = "Search by Date :";
+            // 
             // frmAccountPayable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1041, 480);
+            this.ClientSize = new System.Drawing.Size(1189, 480);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnDetails);
             this.Controls.Add(this.btnView);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnSearch);
@@ -171,6 +200,7 @@
             this.Controls.Add(this.lsvBCollection);
             this.Name = "frmAccountPayable";
             this.Text = "Accounts Payable for Borrowers";
+            this.Load += new System.EventHandler(this.frmAccountPayable_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,7 +211,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnDetails;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnSearch;
@@ -192,5 +221,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -16,6 +16,9 @@ namespace loantracking.FORMS
      
         public ListView lsvevent = new ListView();
         public Int32 mlt;
+        string pictureBarrowerImages = "";
+        string InsertPictureBarrowerImages = "";
+        string namePictures = "";
         public frmCustomer()
         {
             InitializeComponent();
@@ -51,6 +54,15 @@ namespace loantracking.FORMS
                 txtcompanyaddress.Text = c_info.propCompanyAdd;
                 txtcompanyname.Text = c_info.propCompanyName;
 
+                cm.loadPictureBarrower(mlt);
+                //pictureBarrowerImages = cm.propPicBarrower;
+                picBorrower.Image = Image.FromFile(@"D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\bimages\" + cm.propPicBarrower);
+                picBorrower.SizeMode = PictureBoxSizeMode.StretchImage;
+
+               // picBorrower.Image = Image.FromFile(@"D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\bimages\default_avatar.jpg");
+               // picBorrower.SizeMode = PictureBoxSizeMode.StretchImage;
+
+
                 if (c_info.propCivilStatus != "Single")
                 {
                     cl_spouse sp = new cl_spouse();
@@ -71,6 +83,9 @@ namespace loantracking.FORMS
                 DateTime dt = DateTime.Today;
                 Int64 dx =f.autoUserID()+1;
                 txtMoneyLenderID.Text =dt.Year.ToString("X2") + String.Format("{0:D5}", dx);
+               picBorrower.Image = Image.FromFile(@"D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\bimages\default_avatar.jpg");
+               picBorrower.SizeMode = PictureBoxSizeMode.StretchImage;
+
             }
         }
 
@@ -95,7 +110,7 @@ namespace loantracking.FORMS
             cMoneyLender.propLenderID = txtMoneyLenderID.Text;
             cMoneyLender.propContact_no = txtContactNo.Text;
 
-            l_Info.propLengthofService = Convert.ToInt32(txtlengthservice.Text);
+            l_Info.propLengthofService = Convert.ToInt32(txtlengthservice.Text.ToString());
             l_Info.propHouseType = cbohousetype.Text;
             l_Info.propGender = cboGender.Text;
             l_Info.propEmail = txtemail.Text;
@@ -136,12 +151,22 @@ namespace loantracking.FORMS
                     sp.UPDATE_SPOUSE(mlt);
 
                 }
-
+                cMoneyLender.propMoneyLender_id = mlt;
+                cMoneyLender.propPicBarrower = InsertPictureBarrowerImages;
+                cMoneyLender.UpdatePicBarrower();
                 MessageBox.Show( PUBLIC_VARS.updateData);
             }
             else{
-                cMoneyLender.INSERT_DATA();
+                MYFUNCTIONS f = new MYFUNCTIONS();
 
+                if (cMoneyLender.isBarrowerExist() == true) {
+                    MessageBox.Show("Record already exist.");
+                    return;
+                }
+
+
+                cMoneyLender.INSERT_DATA();
+                int iiiD = PUBLIC_VARS.d.getlastid();
                 int l_sid = Convert.ToInt32(PUBLIC_VARS.d.getlastid().ToString());
                 l_Info.propmonenylenderInfoID = l_sid;
                 l_Info.INSERT_DATATOLENDER();
@@ -150,10 +175,18 @@ namespace loantracking.FORMS
                     sp.INSERT_SPOUSE();
                 
                 }
-                MYFUNCTIONS f = new MYFUNCTIONS();
+               
                 Int64 dx = f.autoUserID() + 1;
                 
                 f.InsertCounterNo(dx);
+
+                if (InsertPictureBarrowerImages == ""){
+                    InsertPictureBarrowerImages = "default_avatar.jpg";
+                }
+
+                cMoneyLender.propPicBarrower = InsertPictureBarrowerImages;
+                cMoneyLender.propMoneyLender_id = iiiD;
+                cMoneyLender.InserPictureBarrower();
 
                 MessageBox.Show(PUBLIC_VARS.saveData);
 
@@ -223,5 +256,84 @@ namespace loantracking.FORMS
                 txtspousename.BackColor = Color.White;
             }
         }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            dlg.Title = "Open Image";
+            dlg.Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+               // picBorrower.Image = new Bitmap(dlg.OpenFile());
+               //string Chosen_File = dlg.FileName;
+               //  onlyFileName = System.IO.Path.GetFileName(dlg.FileName);
+               //  //MessageBox.Show(Chosen_File.ToString());
+               //  InsertPictureBarrowerImages = Chosen_File;
+
+                picBorrower.ImageLocation = dlg.FileName;
+                picBorrower.SizeMode = PictureBoxSizeMode.StretchImage;
+                namePictures = dlg.FileName;
+            }
+            dlg.Dispose();
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog slg = new SaveFileDialog();
+           
+            slg.Title = "Save Image";
+           // dlg.Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*";
+            slg.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
+            slg.Title = "Save an Image File";
+            slg.InitialDirectory =@"D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\bimages";
+            slg.RestoreDirectory = true;
+           
+            
+            if (slg.ShowDialog() == DialogResult.OK)
+            {
+                string savePath = slg.FileName;
+                try
+                {
+                    pictureBarrowerImages = System.IO.Path.GetFileName(saveFileDialog1.FileName);
+                    picBorrower.SizeMode = PictureBoxSizeMode.StretchImage;
+                    System.IO.FileStream fs = (System.IO.FileStream)slg.OpenFile();
+
+                    //string path = savePath;
+                    //string[] pathArr = path.Split('\\');
+                    ////string[] fileArr = pathArr.Last().Split('.');
+                    //string fileArr = pathArr.Last().ToString();
+                    //string fileName = fileArr.Last().ToString();
+
+                    savePath = System.IO.Path.GetFileName(slg.FileName);
+
+                    switch (slg.FilterIndex)
+                    {
+                        case 1:
+                            //this.btnSave.Image.Save(fs,System.Drawing.Imaging.ImageFormat.Jpeg);
+                            this.picBorrower.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                            InsertPictureBarrowerImages = savePath;
+                            break;
+
+                        case 2:
+                            this.picBorrower.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Bmp);
+                            InsertPictureBarrowerImages = slg.FileName;
+                            break;
+
+                        case 3:
+                            this.picBorrower.Image.Save(fs, System.Drawing.Imaging.ImageFormat.Gif);
+                            InsertPictureBarrowerImages = slg.FileName;
+                            break;
+                    }
+                    fs.Dispose(); 
+               
+                }
+                catch (Exception hammer) { MessageBox.Show(hammer.Message); }
+               
+            }
+        }
+      
     }
 }

@@ -65,7 +65,49 @@ namespace loantracking.CLASSES
             PUBLIC_VARS.d.execute(sql);
             PUBLIC_VARS.d.reader.Close();
         
-        }     
+        }
+
+        public void acctPayable(ListView lsv, int dt, int yr) {
+            string sql = "";
+
+            if(dt <= 0 && yr<=0 ){
+            sql = "SELECT b.lenderID,CONCAT(b.fname, ' ', b.mi, ' ' , b.lname) as NAME,b.address," +
+                  " b.contact_no,sum(sp.mnt_amount) mnt_amount,sum(sp.penalty_amount) penalty_amount,sp.schedule_date " +
+                  "from tmoneylender b " +
+                  "inner join tschedule_of_payment sp on b.moneylender_id = sp.moneylender_id where status = 'pending' group by lenderID";
+            }
+            else{
+
+            sql = "SELECT b.lenderID,CONCAT(b.fname, ' ', b.mi, ' ' , b.lname) as NAME,b.address," +
+                  " b.contact_no,sp.mnt_amount,sp.penalty_amount,sp.schedule_date " +
+                  "from tmoneylender b " +
+                  "inner join tschedule_of_payment sp on b.moneylender_id = sp.moneylender_id " +
+                  " where status = 'pending' and MONTH(sp.schedule_date) = " + dt + " and YEAR(sp.schedule_date) = " + yr ;
+            }
+            PUBLIC_VARS.d.execute(sql);
+            try
+            {
+                //lenderID, NAME, address, contact_no, mnt_amount, penalty_amount, schedule_date
+                lsv.Items.Clear();
+                if(PUBLIC_VARS.d.reader.HasRows){
+                    while(PUBLIC_VARS.d.reader.Read()){
+                        Int32 index = lsv.Items.Count;
+                        lsv.Items.Add(PUBLIC_VARS.d.reader["lenderID"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["NAME"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["address"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["contact_no"].ToString());
+                        lsv.Items[index].SubItems.Add(String.Format("{0:#,##0.00}",PUBLIC_VARS.d.reader["mnt_amount"].ToString()));
+                        lsv.Items[index].SubItems.Add(String.Format("{0:#,##0.00}",PUBLIC_VARS.d.reader["penalty_amount"].ToString()));
+                        lsv.Items[index].SubItems.Add(String.Format("{0:D}", (PUBLIC_VARS.d.reader["schedule_date"].ToString())));
+                        
+                    }
+                
+                }
+
+            }
+            catch (Exception x) { MessageBox.Show(x.Message); }
+            finally { PUBLIC_VARS.d.reader.Close(); }
+        }
 
     }
 }

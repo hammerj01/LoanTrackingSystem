@@ -49,6 +49,7 @@
             this.listOfCIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.accountsPayableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -158,6 +159,7 @@
             // 
             this.inquiryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listOfMoneyLenderToolStripMenuItem,
+            this.accountsPayableToolStripMenuItem,
             this.accountsRecievableToolStripMenuItem,
             this.toolStripMenuItem4,
             this.listOfCIToolStripMenuItem});
@@ -168,26 +170,26 @@
             // listOfMoneyLenderToolStripMenuItem
             // 
             this.listOfMoneyLenderToolStripMenuItem.Name = "listOfMoneyLenderToolStripMenuItem";
-            this.listOfMoneyLenderToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.listOfMoneyLenderToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.listOfMoneyLenderToolStripMenuItem.Text = "List of Borrowers";
             this.listOfMoneyLenderToolStripMenuItem.Click += new System.EventHandler(this.listOfMoneyLenderToolStripMenuItem_Click);
             // 
             // accountsRecievableToolStripMenuItem
             // 
             this.accountsRecievableToolStripMenuItem.Name = "accountsRecievableToolStripMenuItem";
-            this.accountsRecievableToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.accountsRecievableToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.accountsRecievableToolStripMenuItem.Text = "Collections";
             this.accountsRecievableToolStripMenuItem.Click += new System.EventHandler(this.accountsRecievableToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(159, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(165, 6);
             // 
             // listOfCIToolStripMenuItem
             // 
             this.listOfCIToolStripMenuItem.Name = "listOfCIToolStripMenuItem";
-            this.listOfCIToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.listOfCIToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.listOfCIToolStripMenuItem.Text = "List of Penalty";
             this.listOfCIToolStripMenuItem.Click += new System.EventHandler(this.listOfCIToolStripMenuItem_Click);
             // 
@@ -206,6 +208,13 @@
             this.pictureBox1.Size = new System.Drawing.Size(1364, 701);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            // 
+            // accountsPayableToolStripMenuItem
+            // 
+            this.accountsPayableToolStripMenuItem.Name = "accountsPayableToolStripMenuItem";
+            this.accountsPayableToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.accountsPayableToolStripMenuItem.Text = "Accounts Payable";
+            this.accountsPayableToolStripMenuItem.Click += new System.EventHandler(this.accountsPayableToolStripMenuItem_Click);
             // 
             // mLoanTracking
             // 
@@ -252,5 +261,6 @@
         private System.Windows.Forms.ToolStripMenuItem penaltyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accountsRecievableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem accountsPayableToolStripMenuItem;
     }
 }

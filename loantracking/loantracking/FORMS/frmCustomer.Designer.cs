@@ -88,12 +88,14 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.picBorrower = new System.Windows.Forms.PictureBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnUpload = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBorrower)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -108,10 +110,13 @@
             // 
             // txtMoneyLenderID
             // 
-            this.txtMoneyLenderID.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMoneyLenderID.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtMoneyLenderID.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMoneyLenderID.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMoneyLenderID.Location = new System.Drawing.Point(15, 28);
             this.txtMoneyLenderID.Name = "txtMoneyLenderID";
-            this.txtMoneyLenderID.Size = new System.Drawing.Size(316, 23);
+            this.txtMoneyLenderID.ReadOnly = true;
+            this.txtMoneyLenderID.Size = new System.Drawing.Size(316, 24);
             this.txtMoneyLenderID.TabIndex = 2;
             // 
             // txtFname
@@ -155,7 +160,7 @@
             // txtLname
             // 
             this.txtLname.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLname.Location = new System.Drawing.Point(384, 75);
+            this.txtLname.Location = new System.Drawing.Point(384, 78);
             this.txtLname.Name = "txtLname";
             this.txtLname.Size = new System.Drawing.Size(316, 23);
             this.txtLname.TabIndex = 8;
@@ -164,7 +169,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(381, 56);
+            this.label4.Location = new System.Drawing.Point(381, 59);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 16);
             this.label4.TabIndex = 7;
@@ -213,7 +218,7 @@
             // txtTin_no
             // 
             this.txtTin_no.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTin_no.Location = new System.Drawing.Point(384, 30);
+            this.txtTin_no.Location = new System.Drawing.Point(384, 33);
             this.txtTin_no.Name = "txtTin_no";
             this.txtTin_no.Size = new System.Drawing.Size(316, 23);
             this.txtTin_no.TabIndex = 14;
@@ -222,7 +227,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(381, 11);
+            this.label7.Location = new System.Drawing.Point(381, 14);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 16);
             this.label7.TabIndex = 13;
@@ -291,7 +296,7 @@
             this.cboGender.Items.AddRange(new object[] {
             "Female",
             "Male"});
-            this.cboGender.Location = new System.Drawing.Point(721, 25);
+            this.cboGender.Location = new System.Drawing.Point(721, 28);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(242, 21);
             this.cboGender.TabIndex = 21;
@@ -300,7 +305,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(718, 6);
+            this.label10.Location = new System.Drawing.Point(718, 9);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 16);
             this.label10.TabIndex = 22;
@@ -310,7 +315,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(718, 58);
+            this.label11.Location = new System.Drawing.Point(718, 61);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(94, 16);
             this.label11.TabIndex = 24;
@@ -323,7 +328,7 @@
             "Single",
             "Married",
             "Divorce"});
-            this.cboCivilStatus.Location = new System.Drawing.Point(721, 77);
+            this.cboCivilStatus.Location = new System.Drawing.Point(721, 80);
             this.cboCivilStatus.Name = "cboCivilStatus";
             this.cboCivilStatus.Size = new System.Drawing.Size(242, 21);
             this.cboCivilStatus.TabIndex = 23;
@@ -638,7 +643,9 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.label26.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Red;
             this.label26.Location = new System.Drawing.Point(110, 9);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(17, 16);
@@ -648,7 +655,9 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.label27.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.Red;
             this.label27.Location = new System.Drawing.Point(96, 54);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(17, 16);
@@ -658,8 +667,10 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(470, 54);
+            this.label28.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.label28.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.Red;
+            this.label28.Location = new System.Drawing.Point(460, 58);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(17, 16);
             this.label28.TabIndex = 41;
@@ -668,8 +679,10 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(89, 105);
+            this.label29.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.label29.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.Red;
+            this.label29.Location = new System.Drawing.Point(84, 110);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(17, 16);
             this.label29.TabIndex = 42;
@@ -678,8 +691,10 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(489, 159);
+            this.label30.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.label30.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.Red;
+            this.label30.Location = new System.Drawing.Point(478, 168);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(17, 16);
             this.label30.TabIndex = 43;
@@ -688,44 +703,57 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(337, 151);
+            this.label31.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.label31.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.Red;
+            this.label31.Location = new System.Drawing.Point(350, 151);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(17, 16);
             this.label31.TabIndex = 44;
             this.label31.Text = "*";
             // 
-            // pictureBox1
+            // picBorrower
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(982, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(228, 131);
-            this.pictureBox1.TabIndex = 45;
-            this.pictureBox1.TabStop = false;
+            this.picBorrower.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picBorrower.Location = new System.Drawing.Point(982, 9);
+            this.picBorrower.Name = "picBorrower";
+            this.picBorrower.Size = new System.Drawing.Size(228, 131);
+            this.picBorrower.TabIndex = 45;
+            this.picBorrower.TabStop = false;
             // 
-            // button1
+            // btnBrowse
             // 
-            this.button1.Location = new System.Drawing.Point(1216, 117);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 46;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnBrowse.Location = new System.Drawing.Point(1216, 77);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowse.TabIndex = 46;
+            this.btnBrowse.Text = "Browse ";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Location = new System.Drawing.Point(1216, 105);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(75, 23);
+            this.btnUpload.TabIndex = 47;
+            this.btnUpload.Text = "Upload";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1315, 541);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnUpload);
+            this.Controls.Add(this.btnBrowse);
+            this.Controls.Add(this.picBorrower);
             this.Controls.Add(this.label31);
-            this.Controls.Add(this.label30);
-            this.Controls.Add(this.label29);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label26);
@@ -761,6 +789,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtMoneyLenderID);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label29);
+            this.Controls.Add(this.label30);
             this.Name = "frmCustomer";
             this.Text = "BORROWERS ENTRY";
             this.Load += new System.EventHandler(this.frmCustomer_Load);
@@ -768,7 +798,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBorrower)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -836,8 +866,10 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox picBorrower;
+        private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

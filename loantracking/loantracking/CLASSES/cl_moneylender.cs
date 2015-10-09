@@ -19,6 +19,13 @@ namespace loantracking.CLASSES
         private DateTime date_moneylender;
         public string contact_no;
         private string lenderID;
+        private string picBarrower;
+
+
+        public string propPicBarrower {
+            get { return this.picBarrower; }
+            set { this.picBarrower = value; }
+        }
 
         public string propAddress
         {
@@ -332,7 +339,65 @@ namespace loantracking.CLASSES
                 PUBLIC_VARS.d.reader.Close();
             }
         }
-       
+
+        public void InserPictureBarrower() {
+            string sql = "";
+            //idtbarrowerpicture, barrower_path, moneylender_id
+            sql = "insert into tbarrowerpicture values(null,'" + this.propPicBarrower + "'," + this.propMoneyLender_id + ")";
+            PUBLIC_VARS.d.execute(sql);
+            PUBLIC_VARS.d.reader.Close();
+        }
+
+        public void UpdatePicBarrower() {
+            string sql = "";
+            sql = "update tbarrowerpicture SET barrower_path = '" + this.propPicBarrower + "' where moneylender_id =" + this.propMoneyLender_id;
+            PUBLIC_VARS.d.execute(sql);
+            PUBLIC_VARS.d.reader.Close();
+        }
+
+        public void loadPictureBarrower(Int32 mID) {
+            string sql = "";
+            sql = "SELECT * FROM tbarrowerpicture where moneylender_id =" + mID;
+            PUBLIC_VARS.d.execute(sql);
+            try
+            {
+                if (PUBLIC_VARS.d.reader.HasRows)
+                {
+                    PUBLIC_VARS.d.reader.Read();
+                    this.propMoneyLender_id = Convert.ToInt32(PUBLIC_VARS.d.reader["moneylender_id"].ToString());
+                    this.propPicBarrower = PUBLIC_VARS.d.reader["barrower_path"].ToString();
+
+                }
+            }
+            catch (Exception x) { MessageBox.Show(x.Message); }
+            finally { PUBLIC_VARS.d.reader.Close(); }
+        }
+
+        public bool isBarrowerExist() {
+            string sql = "";
+            bool ham = false;
+            //moneylender_id, fname, lname, mi, address, age, date_lender, credit_limit, contact_no, lenderID
+            sql = "select * from tmoneylender where lname = '" + this.proplname + "' and fname = '" + this.propfname + "'";
+            PUBLIC_VARS.d.execute(sql);
+           
+                if(PUBLIC_VARS.d.reader.HasRows){
+                    PUBLIC_VARS.d.reader.Read();
+                    
+                    ham = true;
+
+                }
+                 PUBLIC_VARS.d.reader.Close();
+                if (ham == true)
+                {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+      
+            
+                 
+        }
 
     }
 }

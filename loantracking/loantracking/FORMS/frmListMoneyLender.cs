@@ -86,5 +86,10 @@ namespace loantracking.FORMS
             cl_moneylender l = new cl_moneylender();
             l.Search_MONEYLENDER(lsvMoneyLender, "view");
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

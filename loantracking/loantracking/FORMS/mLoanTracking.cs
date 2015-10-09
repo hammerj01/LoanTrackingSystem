@@ -94,5 +94,11 @@ namespace loantracking.FORMS
            // double pen = 0d;
 
         }
+
+        private void accountsPayableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAccountPayable p = new frmAccountPayable();
+            p.ShowDialog();
+        }
     }
 }

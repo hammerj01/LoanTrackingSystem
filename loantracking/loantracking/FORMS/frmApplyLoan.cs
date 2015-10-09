@@ -95,6 +95,10 @@ namespace loantracking.FORMS
                 MessageBox.Show("Please supply the correct amount.");
                 return;
             }
+            if (Convert.ToDouble(txtMonthlyDue.Text)< 0 || Convert.ToDouble(txtMonthlyDue.Text)< 5 )  {
+                MessageBox.Show("Please supply the correct amount.");
+                return;
+            }
             amt_applied = Convert.ToDouble(txtAmountApplied.Text);
             double charges = (amt_applied * 5) / 100;
             double rest1 = (amt_applied * 1.5) / 100;
