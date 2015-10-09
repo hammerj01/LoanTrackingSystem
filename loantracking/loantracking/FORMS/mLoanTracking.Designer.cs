@@ -44,12 +44,15 @@
             this.paymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inquiryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listOfMoneyLenderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountsPayableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountsRecievableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.listOfCIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.accountsPayableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.borrowersReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.barrowersPayablesReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +63,7 @@
             this.maintenanceToolStripMenuItem,
             this.transactionToolStripMenuItem,
             this.inquiryToolStripMenuItem,
+            this.reportToolStripMenuItem1,
             this.logoutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -174,6 +178,13 @@
             this.listOfMoneyLenderToolStripMenuItem.Text = "List of Borrowers";
             this.listOfMoneyLenderToolStripMenuItem.Click += new System.EventHandler(this.listOfMoneyLenderToolStripMenuItem_Click);
             // 
+            // accountsPayableToolStripMenuItem
+            // 
+            this.accountsPayableToolStripMenuItem.Name = "accountsPayableToolStripMenuItem";
+            this.accountsPayableToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.accountsPayableToolStripMenuItem.Text = "Accounts Payable";
+            this.accountsPayableToolStripMenuItem.Click += new System.EventHandler(this.accountsPayableToolStripMenuItem_Click);
+            // 
             // accountsRecievableToolStripMenuItem
             // 
             this.accountsRecievableToolStripMenuItem.Name = "accountsRecievableToolStripMenuItem";
@@ -209,12 +220,27 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // accountsPayableToolStripMenuItem
+            // reportToolStripMenuItem1
             // 
-            this.accountsPayableToolStripMenuItem.Name = "accountsPayableToolStripMenuItem";
-            this.accountsPayableToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.accountsPayableToolStripMenuItem.Text = "Accounts Payable";
-            this.accountsPayableToolStripMenuItem.Click += new System.EventHandler(this.accountsPayableToolStripMenuItem_Click);
+            this.reportToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.borrowersReportToolStripMenuItem,
+            this.barrowersPayablesReportToolStripMenuItem});
+            this.reportToolStripMenuItem1.Name = "reportToolStripMenuItem1";
+            this.reportToolStripMenuItem1.Size = new System.Drawing.Size(54, 20);
+            this.reportToolStripMenuItem1.Text = "Report";
+            // 
+            // borrowersReportToolStripMenuItem
+            // 
+            this.borrowersReportToolStripMenuItem.Name = "borrowersReportToolStripMenuItem";
+            this.borrowersReportToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.borrowersReportToolStripMenuItem.Text = "Borrowers";
+            // 
+            // barrowersPayablesReportToolStripMenuItem
+            // 
+            this.barrowersPayablesReportToolStripMenuItem.Name = "barrowersPayablesReportToolStripMenuItem";
+            this.barrowersPayablesReportToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.barrowersPayablesReportToolStripMenuItem.Text = "Barrowers Payables";
+            this.barrowersPayablesReportToolStripMenuItem.Click += new System.EventHandler(this.barrowersPayablesReportToolStripMenuItem_Click);
             // 
             // mLoanTracking
             // 
@@ -262,5 +288,8 @@
         private System.Windows.Forms.ToolStripMenuItem accountsRecievableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accountsPayableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem borrowersReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem barrowersPayablesReportToolStripMenuItem;
     }
 }

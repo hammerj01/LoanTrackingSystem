@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using loantracking.REPORTS;
 
 namespace loantracking.FORMS
 {
@@ -99,6 +100,18 @@ namespace loantracking.FORMS
         {
             frmAccountPayable p = new frmAccountPayable();
             p.ShowDialog();
+        }
+
+        private void reportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReport r = new frmReport();
+            r.ShowDialog();
+        }
+
+        private void barrowersPayablesReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBarrowersPayable pb = new frmBarrowersPayable();
+            pb.ShowDialog();
         }
     }
 }
