@@ -20,8 +20,13 @@ namespace loantracking.CLASSES
         public string contact_no;
         private string lenderID;
         private string picBarrower;
+        private string is_inactive;
 
 
+        public string propIs_inactive {
+            get { return this.is_inactive; }
+            set { this.is_inactive = value; }
+        }
         public string propPicBarrower {
             get { return this.picBarrower; }
             set { this.picBarrower = value; }
@@ -137,6 +142,7 @@ namespace loantracking.CLASSES
             this.lenderID = value;
         }
     }
+
     
         public void INSERT_DATA()
         {
@@ -145,7 +151,7 @@ namespace loantracking.CLASSES
             sql = "INSERT INTO tmoneylender VALUES(NULL," +
                   "'" + propfname + "','" + proplname + "','" + propMI + "',"  +
                   "'" + propAddress + "', " + propAge + ", NOW(), " + propCreditLimit + ", '" + propContact_no +"'," +
-                  "'" + propLenderID + "')";
+                  "'" + propLenderID + "','" + propIs_inactive + "')";
              PUBLIC_VARS.d.execute(sql);
             PUBLIC_VARS.d.reader.Close();
         }
@@ -156,7 +162,7 @@ namespace loantracking.CLASSES
             sql = "UPDATE tmoneylender SET address = '" + propAddress + "'," +
                   " FNAME = '" + propfname + "', lname = '" + proplname + "', " + 
                   " mi = '" + propMI + "', age = " + propAge + ",  credit_limit = " + propCreditLimit + ", " +
-                  " contact_no = '"  + propContact_no + "', lenderID = '" + propLenderID + "' " +
+                  " contact_no = '" + propContact_no + "', lenderID = '" + propLenderID + "', is_active = '" + this.propIs_inactive + "' " +
                   " WHERE moneylender_id = " + moneylender_id;
                 PUBLIC_VARS.d.execute(sql);
                 PUBLIC_VARS.d.reader.Close();
@@ -174,7 +180,7 @@ namespace loantracking.CLASSES
             string sql = "";
             sql = "SELECT * FROM tmoneylender";
             PUBLIC_VARS.d.execute(sql);
-            //moneylender_id, fname, lname, mi, address, age, date_lender, credit_limit
+            //moneylender_id, fname, lname, mi, address, age, date_lender, credit_limit, contact_no, lenderID, is_active
             try {
                 if (PUBLIC_VARS.d.reader.HasRows)
                 {
@@ -191,7 +197,7 @@ namespace loantracking.CLASSES
                         lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["credit_limit"].ToString());
                         lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["contact_no"].ToString());
                         lsv.Items[index].SubItems.Add(Convert.ToDateTime(PUBLIC_VARS.d.reader["date_lender"].ToString()).ToShortDateString().ToString());
-                        //lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["lenderID"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["is_active"].ToString());
                     }
                 }
             
@@ -202,6 +208,59 @@ namespace loantracking.CLASSES
             
             }
             finally{
+                PUBLIC_VARS.d.reader.Close();
+            }
+        }
+
+        public void LOAD_MONEYLENDER_Actvie(ListView lsv,string txt)
+        {
+            lsv.Items.Clear();
+            string sql = "";
+
+            if(txt == "Active"){
+                sql = "SELECT * FROM tmoneylender where is_active ='" + txt + "'";
+            }
+            else if (txt == "Inactive")
+            {
+                sql = "SELECT * FROM tmoneylender where is_active ='" + txt + "'";  
+            }
+            else if (txt == "All")
+            {
+                sql = "SELECT * FROM tmoneylender";
+            }
+            
+            
+            PUBLIC_VARS.d.execute(sql);
+            //moneylender_id, fname, lname, mi, address, age, date_lender, credit_limit, contact_no, lenderID, is_active
+            try
+            {
+                if (PUBLIC_VARS.d.reader.HasRows)
+                {
+                    while (PUBLIC_VARS.d.reader.Read())
+                    {
+                        int index = lsv.Items.Count;
+                        lsv.Items.Add(PUBLIC_VARS.d.reader["moneylender_id"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["lenderID"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["fname"].ToString() + " " + PUBLIC_VARS.d.reader["mi"].ToString() + " " + PUBLIC_VARS.d.reader["lname"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["address"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["age"].ToString());
+
+                        //MessageBox.Show(Convert.ToDateTime(PUBLIC_VARS.d.reader["date_lender"].ToString()).ToShortDateString().ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["credit_limit"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["contact_no"].ToString());
+                        lsv.Items[index].SubItems.Add(Convert.ToDateTime(PUBLIC_VARS.d.reader["date_lender"].ToString()).ToShortDateString().ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["is_active"].ToString());
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
                 PUBLIC_VARS.d.reader.Close();
             }
         }
@@ -225,8 +284,10 @@ namespace loantracking.CLASSES
                         propAge =  Convert.ToInt32(PUBLIC_VARS.d.reader["age"].ToString());
                         //propDate =  Convert.ToDateTime(PUBLIC_VARS.d.reader["date_lender"].ToString()).ToShortDateString();
                         propCreditLimit =Convert.ToDouble(PUBLIC_VARS.d.reader["credit_limit"].ToString());
+                        
                         propContact_no = PUBLIC_VARS.d.reader["contact_no"].ToString();
                         propLenderID = PUBLIC_VARS.d.reader["lenderID"].ToString();
+                        propIs_inactive = PUBLIC_VARS.d.reader["is_active"].ToString();
                     }
                 
                 }
@@ -262,6 +323,7 @@ namespace loantracking.CLASSES
                         propCreditLimit = Convert.ToDouble(PUBLIC_VARS.d.reader["credit_limit"].ToString());
                         propContact_no = PUBLIC_VARS.d.reader["contact_no"].ToString();
                         propLenderID = PUBLIC_VARS.d.reader["lenderID"].ToString();
+                        propLenderID = PUBLIC_VARS.d.reader["is_active"].ToString();
                     }
 
                 }
@@ -298,11 +360,11 @@ namespace loantracking.CLASSES
             lsv.Items.Clear();
             string sql = "";
 
-            if (txt == "view"){
-                sql = "SELECT * FROM tmoneylender";
-            }
-            else
-            { sql = "SELECT * FROM tmoneylender WHERE lname = '" + txt + "'";}
+            //if (txt == "view"){
+            //    sql = "SELECT * FROM tmoneylender";
+            //}
+            //else
+             sql = "SELECT * FROM tmoneylender WHERE lname like '%" + txt + "%'"; 
             
            
             PUBLIC_VARS.d.execute(sql);
@@ -324,7 +386,7 @@ namespace loantracking.CLASSES
                         lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["credit_limit"].ToString());
                         lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["contact_no"].ToString());
                         lsv.Items[index].SubItems.Add(Convert.ToDateTime(PUBLIC_VARS.d.reader["date_lender"].ToString()).ToShortDateString().ToString());
-                        //lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["lenderID"].ToString());
+                        lsv.Items[index].SubItems.Add(PUBLIC_VARS.d.reader["is_active"].ToString());
                     }
                 }
 
@@ -366,7 +428,6 @@ namespace loantracking.CLASSES
                     PUBLIC_VARS.d.reader.Read();
                     this.propMoneyLender_id = Convert.ToInt32(PUBLIC_VARS.d.reader["moneylender_id"].ToString());
                     this.propPicBarrower = PUBLIC_VARS.d.reader["barrower_path"].ToString();
-
                 }
             }
             catch (Exception x) { MessageBox.Show(x.Message); }
@@ -394,9 +455,38 @@ namespace loantracking.CLASSES
                 else {
                     return false;
                 }
-      
-            
                  
+        }
+
+        public bool isBarrowerActive(int myIDs)
+        {
+            string sql = "";
+            bool ham = false;
+            //moneylender_id, fname, lname, mi, address, age, date_lender, credit_limit, contact_no, lenderID
+            sql = "select * from tmoneylender where moneylender_id = " + myIDs;
+            PUBLIC_VARS.d.execute(sql);
+
+            if (PUBLIC_VARS.d.reader.HasRows)
+            {
+                PUBLIC_VARS.d.reader.Read();
+
+                if (PUBLIC_VARS.d.reader["is_active"].ToString() == "Inactive")
+                {
+                    ham = true;
+                }
+                else { ham = false; }
+
+            }
+            PUBLIC_VARS.d.reader.Close();
+            if (ham == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
     }

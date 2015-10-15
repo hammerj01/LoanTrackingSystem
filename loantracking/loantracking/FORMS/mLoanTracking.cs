@@ -113,5 +113,17 @@ namespace loantracking.FORMS
             frmBarrowersPayable pb = new frmBarrowersPayable();
             pb.ShowDialog();
         }
+
+        private void userEntryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserEntry u = new frmUserEntry();
+            u.ShowDialog();
+        }
+
+        private void borrowersReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReport r = new frmReport();
+            r.ShowDialog();
+        }
     }
 }

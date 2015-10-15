@@ -92,6 +92,11 @@ namespace loantracking
             get { return this.schedule_date; }
             set { this.schedule_date = value; }
         }
+        double balance_amount = 0d;
+        public double propBalanceAmount {
+            get { return this.balance_amount; }
+            set { this.balance_amount = value; }
+        }
 
         public void INSERT_LENDER_INFORM()
         {
@@ -100,7 +105,8 @@ namespace loantracking
 
             sql = "";
             sql = "INSERT INTO tschedule_of_payment VALUES(NULL,  " + this.propLoan_id + " , " + this.propMoneyLender_id + "," +
-                  "'" + this.propStatus + "'," + this.propMnt_amount + "," + this.propPrinc + ","+ this.propHpenalty+",'"+ String.Format("{0:s}", this.propSchedate) +"')";
+                  "'" + this.propStatus + "'," + this.propMnt_amount + "," + this.propPrinc + ","+
+                  " " + this.propHpenalty+",'"+ String.Format("{0:s}", this.propSchedate) +"'," + this.balance_amount + " )";
             PUBLIC_VARS.d.execute(sql);
             PUBLIC_VARS.d.reader.Close();
         }
@@ -230,10 +236,15 @@ namespace loantracking
         public void hasBorrowerPenalty(Int32 lenderID) {
             sql = "";
 
-            sql = "SELECT if((DATEDIFF(now(),sp.schedule_date) * p.penalty_amount) > 0,(DATEDIFF(now(),sp.schedule_date) * p.penalty_amount), 0) as penalties, " +
-                   "sp.moneylender_loan_ID from  tschedule_of_payment sp, tpenalty p " +
-                   " WHERE sp.STATUS = 'PENDING' and p.remarks = 'Active' and sp.moneylender_id = " + lenderID + " " +
-                   "group by sp.moneylender_loan_id" ;
+            //sql = "SELECT if((DATEDIFF(now(),sp.schedule_date) * p.penalty_amount) > 0,(DATEDIFF(now(),sp.schedule_date) * p.penalty_amount), 0) as penalties, " +
+            //       "sp.moneylender_loan_ID from  tschedule_of_payment sp, tpenalty p " +
+            //       " WHERE sp.STATUS = 'PENDING' and p.remarks = 'Active' and sp.moneylender_id = " + lenderID + " " +
+            //       "group by sp.moneylender_loan_id" ;
+
+            sql = "SELECT  if(DATEDIFF(now(),sp.schedule_date) >0,(sp.balance_amount * 0.015)/(30 * DATEDIFF(now(),sp.schedule_date)),0) as penalty, sp.moneylender_loan_ID" +
+                  " from tschedule_of_payment sp WHERE sp.STATUS = 'PENDING' and sp.moneylender_id = 24 " +
+                  " group by sp.moneylender_loan_id";
+
             PUBLIC_VARS.d.execute(sql);
            
 
@@ -246,22 +257,16 @@ namespace loantracking
                         double dd = 0d;
                         // int index = lsv.Items.Count;
 
-                        dd = Convert.ToDouble(PUBLIC_VARS.d.reader["penalties"].ToString());
+                        dd = Convert.ToDouble(PUBLIC_VARS.d.reader["penalty"].ToString());
                         Int32 mid = Convert.ToInt32(PUBLIC_VARS.d.reader["moneylender_loan_id"].ToString());
                         PUBLIC_VARS.d.reader.Close();
                         sql2 = "UPDATE tschedule_of_payment SET penalty_amount = " + dd + " where moneylender_loan_id = " + mid;
                         PUBLIC_VARS.d.execute(sql2);
-                        //PUBLIC_VARS.d.reader.Close();
-
-                       
+                        //PUBLIC_VARS.d.reader.Close();         
                         // lstq.Add(Convert.ToDouble(PUBLIC_VARS.d.reader["penalties"].ToString()));
 
                     }
                 }
-                //foreach (double eel in lstq)
-                //{
-                //    string sql2 = "";
-                //}
             }
             catch (Exception x) { MessageBox.Show(x.Message); }
             PUBLIC_VARS.d.reader.Close();

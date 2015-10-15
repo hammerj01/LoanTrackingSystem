@@ -35,3 +35,4 @@ D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracki
 D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.FORMS.frmAccountPayable.resources
 D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.REPORTS.frmReport.resources
 D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.REPORTS.frmBarrowersPayable.resources
+D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\obj\Debug\loantracking.FORMS.frmUserEntry.resources

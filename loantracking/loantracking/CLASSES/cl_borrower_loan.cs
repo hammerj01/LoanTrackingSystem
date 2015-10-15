@@ -84,5 +84,29 @@ namespace loantracking.CLASSES
 
         }
 
+        //public bool checkBorrowerHasLoanActive(int cust_id)
+        //{
+
+        //    sql = "";
+        //    sql = "select * from tmoneylender_loan cust_id = " + cust_id;
+        //    PUBLIC_VARS.d.execute(sql);
+        //    if (PUBLIC_VARS.d.reader.HasRows)
+        //    {
+        //        while (PUBLIC_VARS.d.reader.Read()) {
+
+        //            if (PUBLIC_VARS.d.reader["remarks"] == "Pending")
+        //            {
+        //                return true;
+        //            }
+        //            else {
+        //                return false;
+        //            }
+        //        }
+
+        //    }
+          
+
+        //}
+
     }
 }

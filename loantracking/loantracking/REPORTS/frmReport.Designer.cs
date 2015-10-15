@@ -35,10 +35,11 @@
             // 
             this.crystalReportViewer1.ActiveViewIndex = -1;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(12, 12);
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.SelectionFormula = "";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(832, 437);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(856, 461);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ViewTimeSelectionFormula = "";
             // 
@@ -50,6 +51,7 @@
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "frmReport";
             this.Text = "frmReport";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReport_Load);
             this.ResumeLayout(false);
 

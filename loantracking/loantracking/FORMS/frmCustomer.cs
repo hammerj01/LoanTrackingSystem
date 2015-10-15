@@ -19,6 +19,7 @@ namespace loantracking.FORMS
         string pictureBarrowerImages = "";
         string InsertPictureBarrowerImages = "";
         string namePictures = "";
+        string tempPictures = "";
         public frmCustomer()
         {
             InitializeComponent();
@@ -40,6 +41,7 @@ namespace loantracking.FORMS
                 txtTin_no.Text = cm.propCreditLimit.ToString();
                 txtContactNo.Text = cm.propContact_no;
                 txtMoneyLenderID.Text = cm.propLenderID;
+                cboLenderType.Text = cm.propIs_inactive;
 
                 c_info.LOAD_TOFIELDSinfo(mlt);
                 txtbirthplace.Text = c_info.propbirthplace;
@@ -55,6 +57,7 @@ namespace loantracking.FORMS
                 txtcompanyname.Text = c_info.propCompanyName;
 
                 cm.loadPictureBarrower(mlt);
+                tempPictures = cm.propPicBarrower;
                 //pictureBarrowerImages = cm.propPicBarrower;
                 picBorrower.Image = Image.FromFile(@"D:\MY PROJECTS\LoanTrackingSystem\loantracking\loantracking\bimages\" + cm.propPicBarrower);
                 picBorrower.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -73,8 +76,6 @@ namespace loantracking.FORMS
                     txtsCompany.Text = sp.propsCompany;
                     txtSoCCu.Text = sp.propspouseOcc;
                 }
-
-
             }
             else
             { 
@@ -109,6 +110,7 @@ namespace loantracking.FORMS
             cMoneyLender.propCreditLimit = Convert.ToDouble(222);
             cMoneyLender.propLenderID = txtMoneyLenderID.Text;
             cMoneyLender.propContact_no = txtContactNo.Text;
+            cMoneyLender.propIs_inactive = cboLenderType.Text;
 
             l_Info.propLengthofService = Convert.ToInt32(txtlengthservice.Text.ToString());
             l_Info.propHouseType = cbohousetype.Text;
@@ -129,6 +131,12 @@ namespace loantracking.FORMS
             sp.propspouseOcc = txtSoCCu.Text;
             sp.propsCompany =txtsCompany.Text;
             sp.propsPosition=txtspouseP.Text;
+
+            //check if is active or not
+            cl_borrower_loan bl = new cl_borrower_loan();
+
+
+
             if (cboCivilStatus.Text != "Single")
             {
                sp.props_age = Convert.ToInt32(txtSpouseAge.Text);
@@ -152,7 +160,15 @@ namespace loantracking.FORMS
 
                 }
                 cMoneyLender.propMoneyLender_id = mlt;
-                cMoneyLender.propPicBarrower = InsertPictureBarrowerImages;
+
+                if (InsertPictureBarrowerImages == "")
+                {
+                    cMoneyLender.propPicBarrower = tempPictures;
+                }
+                else
+                {
+                    cMoneyLender.propPicBarrower = InsertPictureBarrowerImages;
+                }
                 cMoneyLender.UpdatePicBarrower();
                 MessageBox.Show( PUBLIC_VARS.updateData);
             }

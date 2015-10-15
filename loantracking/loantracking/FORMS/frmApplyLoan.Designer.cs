@@ -41,6 +41,7 @@
             this.lsvPaymentSched = new System.Windows.Forms.ListView();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.btnProcess = new System.Windows.Forms.Button();
@@ -138,10 +139,10 @@
             // 
             // lbldatenow
             // 
-            this.lbldatenow.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldatenow.Location = new System.Drawing.Point(370, 9);
+            this.lbldatenow.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldatenow.Location = new System.Drawing.Point(397, 4);
             this.lbldatenow.Name = "lbldatenow";
-            this.lbldatenow.Size = new System.Drawing.Size(306, 30);
+            this.lbldatenow.Size = new System.Drawing.Size(268, 23);
             this.lbldatenow.TabIndex = 31;
             this.lbldatenow.Text = "Date now";
             this.lbldatenow.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -162,6 +163,7 @@
             this.lsvPaymentSched.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2,
             this.columnHeader3,
+            this.columnHeader7,
             this.columnHeader1,
             this.columnHeader4});
             this.lsvPaymentSched.FullRowSelect = true;
@@ -176,25 +178,31 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Schedule Date";
-            this.columnHeader2.Width = 200;
+            this.columnHeader2.Width = 150;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Monthly Due";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader3.Width = 170;
+            this.columnHeader3.Width = 130;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Interest";
+            this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader7.Width = 120;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Principal";
             this.columnHeader1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader1.Width = 170;
+            this.columnHeader1.Width = 150;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Status";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 100;
+            this.columnHeader4.Width = 98;
             // 
             // btnProcess
             // 
@@ -376,5 +384,6 @@
         private System.Windows.Forms.TextBox txtMonthlyDue;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
     }
 }

@@ -1,0 +1,707 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.5.8
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema dbtracking
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ dbtracking;
+USE dbtracking;
+
+--
+-- Table structure for table `dbtracking`.`tassests`
+--
+
+DROP TABLE IF EXISTS `tassests`;
+CREATE TABLE `tassests` (
+  `assests_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`assests_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tassests`
+--
+
+/*!40000 ALTER TABLE `tassests` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tassests` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tbarrowerpicture`
+--
+
+DROP TABLE IF EXISTS `tbarrowerpicture`;
+CREATE TABLE `tbarrowerpicture` (
+  `idtbarrowerpicture` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `barrower_path` text NOT NULL,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`idtbarrowerpicture`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tbarrowerpicture`
+--
+
+/*!40000 ALTER TABLE `tbarrowerpicture` DISABLE KEYS */;
+INSERT INTO `tbarrowerpicture` (`idtbarrowerpicture`,`barrower_path`,`moneylender_id`) VALUES 
+ (2,'sdfe.jpg',28),
+ (3,'default_avatar.jpg',30),
+ (4,'sd.jpg',24),
+ (5,'sd.jpg',26),
+ (6,'default_avatar.jpg',25),
+ (7,'smple1.jpg',27),
+ (8,'default_avatar.jpg',29),
+ (9,'smple1.jpg',31),
+ (10,'sdfe.jpg',32);
+/*!40000 ALTER TABLE `tbarrowerpicture` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tchildren`
+--
+
+DROP TABLE IF EXISTS `tchildren`;
+CREATE TABLE `tchildren` (
+  `children_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `age` int(10) unsigned NOT NULL,
+  `occupation` varchar(100) NOT NULL,
+  `school_company` varchar(100) NOT NULL,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`children_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tchildren`
+--
+
+/*!40000 ALTER TABLE `tchildren` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tchildren` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tci`
+--
+
+DROP TABLE IF EXISTS `tci`;
+CREATE TABLE `tci` (
+  `ci_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `fname` varchar(45) NOT NULL,
+  `lname` varchar(45) NOT NULL,
+  `ci_address` varchar(45) NOT NULL,
+  `ci_tel_no` varchar(45) NOT NULL,
+  PRIMARY KEY (`ci_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tci`
+--
+
+/*!40000 ALTER TABLE `tci` DISABLE KEYS */;
+INSERT INTO `tci` (`ci_id`,`fname`,`lname`,`ci_address`,`ci_tel_no`) VALUES 
+ (3,'Archie ','Cordova','Tagbilaran City','09489929439');
+/*!40000 ALTER TABLE `tci` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tci_moneylender`
+--
+
+DROP TABLE IF EXISTS `tci_moneylender`;
+CREATE TABLE `tci_moneylender` (
+  `ci_moneylender_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ci_id` int(10) unsigned NOT NULL,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `date_cm` datetime NOT NULL,
+  PRIMARY KEY (`ci_moneylender_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tci_moneylender`
+--
+
+/*!40000 ALTER TABLE `tci_moneylender` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tci_moneylender` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tcollateral`
+--
+
+DROP TABLE IF EXISTS `tcollateral`;
+CREATE TABLE `tcollateral` (
+  `collateral_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `collateral_name` varchar(45) NOT NULL,
+  `collateral_description` varchar(45) NOT NULL,
+  PRIMARY KEY (`collateral_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tcollateral`
+--
+
+/*!40000 ALTER TABLE `tcollateral` DISABLE KEYS */;
+INSERT INTO `tcollateral` (`collateral_id`,`collateral_name`,`collateral_description`) VALUES 
+ (3,'Vehicle','any');
+/*!40000 ALTER TABLE `tcollateral` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tcounter`
+--
+
+DROP TABLE IF EXISTS `tcounter`;
+CREATE TABLE `tcounter` (
+  `counterNo` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `counterValue` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`counterNo`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tcounter`
+--
+
+/*!40000 ALTER TABLE `tcounter` DISABLE KEYS */;
+INSERT INTO `tcounter` (`counterNo`,`counterValue`) VALUES 
+ (1,11);
+/*!40000 ALTER TABLE `tcounter` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tcustomer_collateral`
+--
+
+DROP TABLE IF EXISTS `tcustomer_collateral`;
+CREATE TABLE `tcustomer_collateral` (
+  `customer_collateral_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `collateral_id` int(10) unsigned NOT NULL,
+  `customer_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`customer_collateral_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tcustomer_collateral`
+--
+
+/*!40000 ALTER TABLE `tcustomer_collateral` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tcustomer_collateral` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tloan`
+--
+
+DROP TABLE IF EXISTS `tloan`;
+CREATE TABLE `tloan` (
+  `loan_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `loan_type` varchar(45) NOT NULL,
+  `loan_description` varchar(45) NOT NULL,
+  PRIMARY KEY (`loan_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tloan`
+--
+
+/*!40000 ALTER TABLE `tloan` DISABLE KEYS */;
+INSERT INTO `tloan` (`loan_id`,`loan_type`,`loan_description`) VALUES 
+ (1,'Installment','any');
+/*!40000 ALTER TABLE `tloan` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tmoneylender`
+--
+
+DROP TABLE IF EXISTS `tmoneylender`;
+CREATE TABLE `tmoneylender` (
+  `moneylender_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `fname` varchar(45) NOT NULL,
+  `lname` varchar(45) NOT NULL,
+  `mi` varchar(1) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `age` int(10) unsigned NOT NULL,
+  `date_lender` datetime NOT NULL,
+  `credit_limit` double(10,2) NOT NULL,
+  `contact_no` varchar(45) NOT NULL,
+  `lenderID` varchar(45) NOT NULL,
+  PRIMARY KEY (`moneylender_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tmoneylender`
+--
+
+/*!40000 ALTER TABLE `tmoneylender` DISABLE KEYS */;
+INSERT INTO `tmoneylender` (`moneylender_id`,`fname`,`lname`,`mi`,`address`,`age`,`date_lender`,`credit_limit`,`contact_no`,`lenderID`) VALUES 
+ (24,'Aileen ','Canones','R','Malitbog, Dagohoy Bohol',27,'2015-10-05 11:08:05',222.00,'09488081919','7DF00003'),
+ (25,'a','a','a','a',86,'2015-10-07 16:08:24',222.00,'a4324','7DF00004'),
+ (26,'Jhun','Merto Jr','a','asd',27,'2015-10-07 21:39:41',222.00,'23423','7DF00005'),
+ (27,'Rhea','Merto','a','as',30,'2015-10-07 21:46:24',222.00,'213123','7DF00006'),
+ (28,'adfsdf','sfdfsa','s','asdfas',27,'2015-10-07 21:57:36',222.00,'sdfas','7DF00007'),
+ (29,'asdf','sadfa','s','assa',27,'2015-10-08 06:54:12',222.00,'asf','7DF00008'),
+ (30,'aaaaaaa','dsfsd','d','asdf',27,'2015-10-08 06:57:25',222.00,'sdaf','7DF00009'),
+ (31,'a','a','a','aaa',26,'2015-10-08 07:23:36',222.00,'aaa','7DF00010'),
+ (32,'as','a','a','aaaa',27,'2015-10-08 07:34:42',222.00,'aaaa','7DF00011');
+/*!40000 ALTER TABLE `tmoneylender` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tmoneylender_information`
+--
+
+DROP TABLE IF EXISTS `tmoneylender_information`;
+CREATE TABLE `tmoneylender_information` (
+  `moneylender_info_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `dateofbirth` datetime NOT NULL,
+  `birthplace` varchar(45) NOT NULL,
+  `gender` varchar(45) NOT NULL,
+  `civil_status` varchar(45) NOT NULL,
+  `email_add` varchar(100) NOT NULL,
+  `TIN_NO` varchar(45) NOT NULL,
+  `HOUSE_TYPE` varchar(45) NOT NULL,
+  `occupation` varchar(45) NOT NULL,
+  `position` varchar(45) NOT NULL,
+  `company_name` varchar(45) NOT NULL,
+  `comp_add` varchar(45) NOT NULL,
+  `length_of_service` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`moneylender_info_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tmoneylender_information`
+--
+
+/*!40000 ALTER TABLE `tmoneylender_information` DISABLE KEYS */;
+INSERT INTO `tmoneylender_information` (`moneylender_info_id`,`moneylender_id`,`dateofbirth`,`birthplace`,`gender`,`civil_status`,`email_add`,`TIN_NO`,`HOUSE_TYPE`,`occupation`,`position`,`company_name`,`comp_add`,`length_of_service`) VALUES 
+ (1,4,'0001-01-01 00:00:00','cebu','Female','','QQQQQ','1212','','QQQQ','QQQ','','',225),
+ (2,3,'0001-01-01 00:00:00','bohol','Female','Single','e3e3e','qw12','Owned','ee','ee','ee','ee',3),
+ (3,8,'0001-01-01 00:00:00','tagbilaran','Female','Single','e3e3e','qw12','Owned','ee','ee','ee','ee',3),
+ (4,17,'0001-01-01 00:00:00','manila','Male','Single','werwer','23432','Owned','sdfs','32423','sdfs','sdfsd',234),
+ (5,18,'1980-09-30 00:00:00','davao','Female','Married','eqweqweqw','232','Owned','qweqweq','qwewq','wqewqe','wqeqwe',432),
+ (6,0,'1980-09-30 00:00:00','davao','Female','Married','eqweqweqw','222','Owned','qweqweq','qwewq','wqewqe','wqeqwe',432),
+ (7,0,'1980-09-30 00:00:00','davao','Female','Married','eqweqweqw','222','Owned','qweqweq','qwewq','wqewqe','wqeqwe',432),
+ (8,0,'1980-09-30 00:00:00','davao','Female','Married','eqweqweqw','222','Owned','qweqweq','qwewq','wqewqe','wqeqwe',432);
+INSERT INTO `tmoneylender_information` (`moneylender_info_id`,`moneylender_id`,`dateofbirth`,`birthplace`,`gender`,`civil_status`,`email_add`,`TIN_NO`,`HOUSE_TYPE`,`occupation`,`position`,`company_name`,`comp_add`,`length_of_service`) VALUES 
+ (9,0,'2015-10-01 00:00:00','cebu','Female','Single','ewwerw','4444','Owned','werwer','werwe','werw','werwe',3),
+ (10,0,'2015-10-01 00:00:00','ewr','Male','Single','ewre','222','Owned','werw','wer','wer','rw',3),
+ (11,10,'2015-10-01 00:00:00','cebu','Female','Single','ewr','4444','Owned','ewr','wer','ewr','wer',3),
+ (12,0,'2015-10-01 00:00:00','erte','Female','Single','43t','222','Owned','t','t','t','t',3),
+ (13,12,'2015-10-01 00:00:00','bohol','Female','Single','234erwew','324','Rented','ewr','er','erw','werw',3),
+ (14,19,'1977-10-01 00:00:00','bohol cortes','Female','Single','rweewr','123','Owned','errew','rwerwe','werewr','ewrrwe',3),
+ (15,20,'1990-10-01 00:00:00','dfsd','Male','Single','dsffsddsf','1232113','Rented','dssdf','sdfdsf','sdfsdf','sdfsdf',3),
+ (16,21,'1980-10-01 00:00:00','3432','','Single','ewrwe','2423','Owned','werwe','rrwe','ewrwer','wewer',3);
+INSERT INTO `tmoneylender_information` (`moneylender_info_id`,`moneylender_id`,`dateofbirth`,`birthplace`,`gender`,`civil_status`,`email_add`,`TIN_NO`,`HOUSE_TYPE`,`occupation`,`position`,`company_name`,`comp_add`,`length_of_service`) VALUES 
+ (17,22,'1988-10-01 00:00:00','sdfa','Male','Single','eere','sadfs','Owned','erwe','rew','ewr','rerw',2),
+ (18,23,'1989-10-01 00:00:00','ewwq','Female','Single','qweqe','werwe','Owned','qweqw','qweqw','qweqw','qweqwe',2),
+ (19,18,'1988-10-01 00:00:00','sdfa','Male','Single','eere','222276','Owned','erwe','rew','ewr','rerw',2),
+ (20,19,'1977-10-01 00:00:00','bohol cortes','Female','Single','rweewr','2229','Owned','errew','rwerwe','werewr','ewrrwe',3),
+ (21,24,'1988-09-09 00:00:00','Bilar, Bohol','Male','Single','','','Owned','Teacher','T-1','DepEd','Tagbilaran City Bohol',10),
+ (22,25,'1929-10-07 00:00:00','aa','Female','Single','aaaa','a','Owned','werwe','wer','werwe','werwe',2),
+ (23,26,'1988-10-07 00:00:00','asdf','Female','Single','sdfsaf','s3e2','Owned','asdf','sdf','sadfa','sdfa',2),
+ (24,27,'1985-10-07 00:00:00','assd','Female','Single','sdafa','asdw23','Owned','4332','qweqwe','234','qweq',0);
+INSERT INTO `tmoneylender_information` (`moneylender_info_id`,`moneylender_id`,`dateofbirth`,`birthplace`,`gender`,`civil_status`,`email_add`,`TIN_NO`,`HOUSE_TYPE`,`occupation`,`position`,`company_name`,`comp_add`,`length_of_service`) VALUES 
+ (25,28,'1988-10-07 00:00:00','sdfasdf','Male','Single','sdfas','dsf3432','Owned','sdfas','sdfas','sdfas','sdfas',0),
+ (26,0,'1988-10-07 00:00:00','sdfasdf','Male','Single','sdfas','222','Owned','sdfas','sdfas','sdfas','sdfas',0),
+ (27,0,'1988-10-07 00:00:00','sdfasdf','Male','Single','sdfas','222','Owned','sdfas','sdfas','sdfas','sdfas',0),
+ (28,0,'1988-10-07 00:00:00','sdfasdf','Male','Single','sdfas','222','Owned','sdfas','sdfas','sdfas','sdfas',0),
+ (29,0,'1988-10-07 00:00:00','sdfasdf','Male','Single','sdfas','222','Owned','sdfas','sdfas','sdfas','sdfas',0),
+ (30,0,'1988-10-07 00:00:00','sdfasdf','Male','Single','sdfas','222','Owned','sdfas','sdfas','sdfas','sdfas',0),
+ (31,0,'1988-10-07 00:00:00','sdfasdf','Male','Single','sdfas','222','Owned','sdfas','sdfas','sdfas','sdfas',0),
+ (32,0,'1988-10-07 00:00:00','sdfasdf','Male','Single','sdfas','222','Owned','sdfas','sdfas','sdfas','sdfas',0);
+INSERT INTO `tmoneylender_information` (`moneylender_info_id`,`moneylender_id`,`dateofbirth`,`birthplace`,`gender`,`civil_status`,`email_add`,`TIN_NO`,`HOUSE_TYPE`,`occupation`,`position`,`company_name`,`comp_add`,`length_of_service`) VALUES 
+ (33,0,'1988-10-07 00:00:00','sdfasdf','Male','Single','sdfas','222','Owned','sdfas','sdfas','sdfas','sdfas',0),
+ (34,0,'1988-10-07 00:00:00','sdfasdf','Male','Single','sdfas','222','Owned','sdfas','sdfas','sdfas','sdfas',0),
+ (35,0,'1988-10-07 00:00:00','sdfasdf','Male','Single','sdfas','222','Owned','sdfas','sdfas','sdfas','sdfas',0),
+ (36,0,'1988-10-07 00:00:00','sdfasdf','Male','Single','sdfas','222','Owned','sdfas','sdfas','sdfas','sdfas',0),
+ (37,29,'1988-10-08 00:00:00','afdsfas','Male','Single','sdafsdf','adas','Owned','242','wer','23423','234',0),
+ (38,30,'1988-10-08 00:00:00','sdfa','Male','Single','','adf','Owned','','','','',0),
+ (39,3,'1988-09-09 00:00:00','Bilar, Bohol','Male','Single','','222','Owned','Teacher','T-1','DepEd','Tagbilaran City Bohol',10),
+ (40,39,'1988-09-09 00:00:00','Bilar, Bohol','Male','Single','','222','Owned','Teacher','T-1','DepEd','Tagbilaran City Bohol',10);
+INSERT INTO `tmoneylender_information` (`moneylender_info_id`,`moneylender_id`,`dateofbirth`,`birthplace`,`gender`,`civil_status`,`email_add`,`TIN_NO`,`HOUSE_TYPE`,`occupation`,`position`,`company_name`,`comp_add`,`length_of_service`) VALUES 
+ (41,40,'1988-09-09 00:00:00','Bilar, Bohol','Male','Single','','222','Owned','Teacher','T-1','DepEd','Tagbilaran City Bohol',10),
+ (42,0,'1988-10-07 00:00:00','asdf','Female','Single','sdfsaf','222','Owned','asdf','sdf','sadfa','sdfa',2),
+ (43,42,'1985-10-07 00:00:00','assd','Female','Single','sdafa','222','Owned','4332','qweqwe','234','qweq',0),
+ (44,31,'1988-10-08 00:00:00','','','Single','','','','','','','',0),
+ (45,32,'1988-10-08 00:00:00','','','Single','','','','','','','',0),
+ (46,0,'1988-10-08 00:00:00','','','Single','','222','','','','','',0),
+ (47,0,'1988-10-08 00:00:00','','','Single','','222','','','','','',0),
+ (48,0,'1988-10-08 00:00:00','','','Single','','222','','','','','',0),
+ (49,48,'1988-10-08 00:00:00','','','Single','','222','','','','','',0),
+ (50,0,'1988-10-08 00:00:00','','','Single','','222','','','','','',0);
+INSERT INTO `tmoneylender_information` (`moneylender_info_id`,`moneylender_id`,`dateofbirth`,`birthplace`,`gender`,`civil_status`,`email_add`,`TIN_NO`,`HOUSE_TYPE`,`occupation`,`position`,`company_name`,`comp_add`,`length_of_service`) VALUES 
+ (51,50,'1988-10-08 00:00:00','','','Single','','222','','','','','',0),
+ (52,51,'1985-10-07 00:00:00','assd','Female','Single','sdafa','222','Owned','4332','qweqwe','234','qweq',0),
+ (53,52,'1988-10-08 00:00:00','sdfa','Male','Single','','222','Owned','','','','',0),
+ (54,53,'1988-10-08 00:00:00','sdfa','Male','Single','','222','Owned','','','','',0),
+ (55,54,'1988-10-08 00:00:00','sdfa','Male','Single','','222','Owned','','','','',0),
+ (56,55,'1988-10-08 00:00:00','','','Single','','222','','','','','',0),
+ (57,0,'1988-10-08 00:00:00','','','Single','','222','','','','','',0);
+/*!40000 ALTER TABLE `tmoneylender_information` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tmoneylender_loan`
+--
+
+DROP TABLE IF EXISTS `tmoneylender_loan`;
+CREATE TABLE `tmoneylender_loan` (
+  `schedule_of_payment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `schedule_date` datetime NOT NULL,
+  `cust_id` int(10) unsigned NOT NULL,
+  `remarks` varchar(45) NOT NULL,
+  `amount_lend` double(10,2) NOT NULL,
+  PRIMARY KEY (`schedule_of_payment_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tmoneylender_loan`
+--
+
+/*!40000 ALTER TABLE `tmoneylender_loan` DISABLE KEYS */;
+INSERT INTO `tmoneylender_loan` (`schedule_of_payment_id`,`schedule_date`,`cust_id`,`remarks`,`amount_lend`) VALUES 
+ (2,'2015-10-06 00:00:00',24,'Pending',100.00),
+ (3,'2015-10-08 00:00:00',32,'Pending',1000.00);
+/*!40000 ALTER TABLE `tmoneylender_loan` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tmoneylender_payment`
+--
+
+DROP TABLE IF EXISTS `tmoneylender_payment`;
+CREATE TABLE `tmoneylender_payment` (
+  `moneylender_payment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `payment_id` int(10) unsigned NOT NULL,
+  `date_paid` datetime NOT NULL,
+  `remarks` varchar(45) NOT NULL,
+  PRIMARY KEY (`moneylender_payment_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tmoneylender_payment`
+--
+
+/*!40000 ALTER TABLE `tmoneylender_payment` DISABLE KEYS */;
+INSERT INTO `tmoneylender_payment` (`moneylender_payment_id`,`moneylender_id`,`payment_id`,`date_paid`,`remarks`) VALUES 
+ (1,1,0,'0000-00-00 00:00:00','paid'),
+ (2,5,0,'2015-10-05 00:00:00','paid'),
+ (3,5,3,'2015-10-05 00:00:00','paid'),
+ (4,1,4,'2015-10-05 00:00:00','paid'),
+ (5,1,5,'2015-10-05 00:00:00','paid'),
+ (6,1,6,'2015-10-05 00:00:00','paid'),
+ (7,1,7,'2015-10-05 00:00:00','paid'),
+ (8,1,8,'2015-10-05 00:00:00','paid'),
+ (9,24,9,'2015-10-05 00:00:00','paid'),
+ (10,24,10,'2015-10-05 00:00:00','paid'),
+ (11,24,11,'2015-12-03 00:00:00','paid');
+/*!40000 ALTER TABLE `tmoneylender_payment` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tmoneylender_penalty`
+--
+
+DROP TABLE IF EXISTS `tmoneylender_penalty`;
+CREATE TABLE `tmoneylender_penalty` (
+  `moneylender_penalty_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `penalty_id` int(10) unsigned NOT NULL,
+  `remarks` varchar(45) NOT NULL,
+  PRIMARY KEY (`moneylender_penalty_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tmoneylender_penalty`
+--
+
+/*!40000 ALTER TABLE `tmoneylender_penalty` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tmoneylender_penalty` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tmoneylender_terms`
+--
+
+DROP TABLE IF EXISTS `tmoneylender_terms`;
+CREATE TABLE `tmoneylender_terms` (
+  `moneylender_terms_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `payment_terms` varchar(45) NOT NULL,
+  `payment_status` varchar(45) NOT NULL,
+  PRIMARY KEY (`moneylender_terms_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tmoneylender_terms`
+--
+
+/*!40000 ALTER TABLE `tmoneylender_terms` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tmoneylender_terms` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tpayment`
+--
+
+DROP TABLE IF EXISTS `tpayment`;
+CREATE TABLE `tpayment` (
+  `payment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `amount` double(10,2) NOT NULL,
+  `date_paid` datetime NOT NULL,
+  `remarks` varchar(45) NOT NULL,
+  PRIMARY KEY (`payment_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tpayment`
+--
+
+/*!40000 ALTER TABLE `tpayment` DISABLE KEYS */;
+INSERT INTO `tpayment` (`payment_id`,`amount`,`date_paid`,`remarks`) VALUES 
+ (1,4800.00,'0000-00-00 00:00:00','paid'),
+ (2,4800.00,'2015-10-05 00:00:00','paid'),
+ (3,4800.00,'2015-10-05 00:00:00','paid'),
+ (4,1000.00,'2015-10-05 00:00:00','paid'),
+ (5,1000.00,'2015-10-05 00:00:00','paid'),
+ (6,1000.00,'2015-10-05 00:00:00','paid'),
+ (7,1000.00,'2015-10-05 00:00:00','paid'),
+ (8,1000.00,'2015-10-05 00:00:00','paid'),
+ (9,1500.00,'2015-10-05 00:00:00','paid'),
+ (10,1500.00,'2015-10-05 00:00:00','paid'),
+ (11,400.00,'2015-12-03 00:00:00','paid');
+/*!40000 ALTER TABLE `tpayment` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tpenalty`
+--
+
+DROP TABLE IF EXISTS `tpenalty`;
+CREATE TABLE `tpenalty` (
+  `penalty_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `penalty_amount` double(10,2) NOT NULL,
+  `remarks` varchar(45) NOT NULL,
+  PRIMARY KEY (`penalty_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tpenalty`
+--
+
+/*!40000 ALTER TABLE `tpenalty` DISABLE KEYS */;
+INSERT INTO `tpenalty` (`penalty_id`,`penalty_amount`,`remarks`) VALUES 
+ (5,54.00,'Not Active'),
+ (7,6045.00,'Not Active'),
+ (8,100.00,'Active');
+/*!40000 ALTER TABLE `tpenalty` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tpersonal_references`
+--
+
+DROP TABLE IF EXISTS `tpersonal_references`;
+CREATE TABLE `tpersonal_references` (
+  `personal_references_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `name_personal` varchar(45) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `contact_no` varchar(45) NOT NULL,
+  PRIMARY KEY (`personal_references_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tpersonal_references`
+--
+
+/*!40000 ALTER TABLE `tpersonal_references` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tpersonal_references` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`treal_estate`
+--
+
+DROP TABLE IF EXISTS `treal_estate`;
+CREATE TABLE `treal_estate` (
+  `real_estate_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `assests_id` int(10) unsigned NOT NULL,
+  `location` varchar(100) NOT NULL,
+  `area` varchar(100) NOT NULL,
+  `title_no` varchar(100) NOT NULL,
+  `encumbrance` varchar(100) NOT NULL,
+  PRIMARY KEY (`real_estate_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`treal_estate`
+--
+
+/*!40000 ALTER TABLE `treal_estate` DISABLE KEYS */;
+/*!40000 ALTER TABLE `treal_estate` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tschedule_of_payment`
+--
+
+DROP TABLE IF EXISTS `tschedule_of_payment`;
+CREATE TABLE `tschedule_of_payment` (
+  `moneylender_loan_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `loan_id` int(10) unsigned NOT NULL,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `mnt_amount` double(10,2) NOT NULL,
+  `principal` double(10,2) NOT NULL,
+  `penalty_amount` double(10,2) NOT NULL,
+  `schedule_date` datetime NOT NULL,
+  PRIMARY KEY (`moneylender_loan_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tschedule_of_payment`
+--
+
+/*!40000 ALTER TABLE `tschedule_of_payment` DISABLE KEYS */;
+INSERT INTO `tschedule_of_payment` (`moneylender_loan_ID`,`loan_id`,`moneylender_id`,`status`,`mnt_amount`,`principal`,`penalty_amount`,`schedule_date`) VALUES 
+ (4,2,24,'Paid',50.00,51.50,300.00,'2015-11-30 00:00:00'),
+ (5,2,24,'Pending',50.00,2.30,0.00,'2015-12-31 00:00:00'),
+ (6,2,24,'Pending',50.00,0.00,0.00,'2016-01-31 00:00:00'),
+ (7,2,32,'Pending',100.00,915.00,0.00,'2015-11-30 00:00:00'),
+ (8,2,32,'Pending',100.00,829.18,0.00,'2015-12-31 00:00:00'),
+ (9,2,32,'Pending',100.00,742.03,0.00,'2016-01-31 00:00:00'),
+ (10,2,32,'Pending',100.00,652.79,0.00,'2016-02-29 00:00:00'),
+ (11,2,32,'Pending',100.00,562.91,0.00,'2016-03-31 00:00:00'),
+ (12,2,32,'Pending',100.00,471.36,0.00,'2016-04-30 00:00:00'),
+ (13,2,32,'Pending',100.00,378.66,0.00,'2016-05-31 00:00:00'),
+ (14,2,32,'Pending',100.00,284.34,0.00,'2016-06-30 00:00:00'),
+ (15,2,32,'Pending',100.00,188.75,0.00,'2016-07-31 00:00:00'),
+ (16,2,32,'Pending',100.00,91.68,0.00,'2016-08-31 00:00:00'),
+ (17,2,32,'Pending',100.00,0.00,0.00,'2016-09-30 00:00:00');
+/*!40000 ALTER TABLE `tschedule_of_payment` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tsource_income`
+--
+
+DROP TABLE IF EXISTS `tsource_income`;
+CREATE TABLE `tsource_income` (
+  `source_income_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `spouse` varchar(45) NOT NULL,
+  `spouse_salary` double(10,2) NOT NULL,
+  `salary` double(10,2) NOT NULL,
+  `business` double(10,2) NOT NULL,
+  `spouse_business` double(10,2) NOT NULL,
+  `total_income` double(10,2) NOT NULL,
+  PRIMARY KEY (`source_income_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tsource_income`
+--
+
+/*!40000 ALTER TABLE `tsource_income` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tsource_income` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tspouse`
+--
+
+DROP TABLE IF EXISTS `tspouse`;
+CREATE TABLE `tspouse` (
+  `spouse_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moneylender_id` int(10) unsigned NOT NULL,
+  `spouse_name` varchar(45) NOT NULL,
+  `s_age` int(10) unsigned NOT NULL,
+  `dob` datetime NOT NULL,
+  `occupation` varchar(45) NOT NULL,
+  `company` varchar(45) NOT NULL,
+  `position` varchar(45) NOT NULL,
+  PRIMARY KEY (`spouse_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tspouse`
+--
+
+/*!40000 ALTER TABLE `tspouse` DISABLE KEYS */;
+INSERT INTO `tspouse` (`spouse_id`,`moneylender_id`,`spouse_name`,`s_age`,`dob`,`occupation`,`company`,`position`) VALUES 
+ (1,18,'mira cal',21,'0001-01-01 12:00:00','sss','d','d');
+/*!40000 ALTER TABLE `tspouse` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tuser`
+--
+
+DROP TABLE IF EXISTS `tuser`;
+CREATE TABLE `tuser` (
+  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `utype` varchar(45) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tuser`
+--
+
+/*!40000 ALTER TABLE `tuser` DISABLE KEYS */;
+INSERT INTO `tuser` (`user_id`,`username`,`password`,`utype`) VALUES 
+ (1,'guest','guest','guest'),
+ (2,'admin','admin','administrator'),
+ (5,'as','as','Guest');
+/*!40000 ALTER TABLE `tuser` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `dbtracking`.`tvehicles`
+--
+
+DROP TABLE IF EXISTS `tvehicles`;
+CREATE TABLE `tvehicles` (
+  `vehicles_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `assets_id` int(10) unsigned NOT NULL,
+  `typeofvehicle` varchar(45) NOT NULL,
+  `year_model` varchar(45) NOT NULL,
+  `cost_vehicle` double(10,2) NOT NULL,
+  `plate_no` varchar(45) NOT NULL,
+  `encumbrance` varchar(45) NOT NULL,
+  PRIMARY KEY (`vehicles_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dbtracking`.`tvehicles`
+--
+
+/*!40000 ALTER TABLE `tvehicles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tvehicles` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -80,7 +80,7 @@ namespace loantracking.FORMS
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-
+            cl_moneylender m = new cl_moneylender();
             cl_lender_inform lend = new cl_lender_inform();
             //less 1 mo. interest = 1.5%
             //charges = 5%
@@ -99,6 +99,14 @@ namespace loantracking.FORMS
                 MessageBox.Show("Please supply the correct amount.");
                 return;
             }
+
+
+            if (m.isBarrowerActive(mYLenderIDs) == true)
+            {
+                MessageBox.Show("Cannot generate loan borrower is Inactive");
+                return;
+            }
+
             amt_applied = Convert.ToDouble(txtAmountApplied.Text);
             double charges = (amt_applied * 5) / 100;
             double rest1 = (amt_applied * 1.5) / 100;
@@ -133,13 +141,19 @@ namespace loantracking.FORMS
             else if(termsNo < 0){
                 termsNo = 36;
             }
-            
+
             int ctr;
-            for ( ctr= 1; ctr <= termsNo; ctr++)
-                {
-                    lstq.Add(timenow.AddMonths(ctr).AddDays(-1));
-                }
-         
+            for (ctr = 1; ctr <= termsNo; ctr++)
+            {
+              //  lstq.Add(timenow.AddMonths(ctr).AddDays(-1));
+              //  MessageBox.Show(timenow.AddMonths(ctr).AddDays(-1).ToString());
+                lstq.Add(timenow.AddMonths(ctr).AddDays(-1));
+            }
+
+            //for (int i = 1; i < lstq.Count; i++)
+            //{
+            //    MessageBox.Show(lstq[i].ToString());
+            //}
            
             double getamnt = Convert.ToDouble(txtAmountApplied.Text);
             double pmt = 0d;
@@ -151,45 +165,108 @@ namespace loantracking.FORMS
             double mntDue = Convert.ToDouble(txtMonthlyDue.Text);
             restDue = getamnt;
             double tmp = 0d;
-            monthstoPay = 0;
+            monthstoPay = 1;
+            //================
 
-                foreach (DateTime eel in lstq)
+            for (int i = 0; i < lstq.Count;i++ )
+            {
+                ListViewItem lvi1 = new ListViewItem();
+                DateTime lastDayOfThisMonth = new DateTime(lstq[i].Year,lstq[i].Month, 1).AddMonths(1).AddDays(-1);
+
+                //DateTime dt = DateTime.Today;
+                lvi1.Text = lstq[i+1].ToString();  //lastDayOfThisMonth.AddMonths(1).ToString("d");
+
+                //lstdatesched.Add(lastDayOfThisMonth.ToString());
+                lstdatesched.Add(lvi1.Text.ToString());
+                no_ofDays = Convert.ToInt32(lastDayOfThisMonth.Day.ToString());
+                // no_ofDays = Convert.ToInt32(lastDayOfThisMonth.AddMonths(Convert.ToInt16(lvi1.Text.Substring(1).ToString())).Day.ToString());
+
+                pmt = 0.0005; //0.015 / 30;  //
+                pmt1 = pmt * no_ofDays;
+                getamnt1 = getamnt * pmt1;
+                re = (mntDue) - getamnt1;
+                tmp = getamnt;
+                getamnt = getamnt - re;
+
+                if (getamnt >= 0)
                 {
-                    ListViewItem lvi1 = new ListViewItem();
-                    DateTime lastDayOfThisMonth = new DateTime(eel.Year, eel.Month, 1).AddMonths(1).AddDays(-1);
-                    
-                   lvi1.Text = lastDayOfThisMonth.ToString("D");
-                   lstdatesched.Add(lastDayOfThisMonth.ToString());
-                   no_ofDays = Convert.ToInt32(lastDayOfThisMonth.Day.ToString());
-
-                   pmt = 0.015 / 30;
-                   pmt1 = pmt * no_ofDays;
-                   getamnt1 = getamnt * pmt1;
-                   re = (mntDue) - getamnt1;
-                   tmp = getamnt;
-                   getamnt = getamnt - re;
-                    
-                  
-                   lvi1.SubItems.Add(mntDue.ToString("#,###0.00"));
-                   monthstoPay = monthstoPay + 1;
-                   lstamt.Add(getamnt);
-                  if (getamnt <= 0)
-                   {
-                       
-                       lvi1.SubItems.Add("0.00".ToString());
-                       txtmonthstopay.Text = monthstoPay - 1 + " " + "Months to pay";
-                       lsvPaymentSched.Items.Add(lvi1);
-                       return;
-                   }
-                   else
-                   {
-                       lvi1.SubItems.Add(getamnt.ToString("#,###0.00"));
-                   }
-                   lvi1.SubItems.Add("Pending");
-                   lsvPaymentSched.Items.Add(lvi1);
-                    //schedule_of_payment_id, schedule_date, cust_id, remarks
-
+                    lvi1.SubItems.Add(mntDue.ToString("#,###0.00"));
+                    lvi1.SubItems.Add(getamnt1.ToString("#,###0.00"));
                 }
+
+                monthstoPay = monthstoPay + 1;
+                lstamt.Add(getamnt);
+                if (getamnt <= 0)
+                {
+                    double tmp_mnt = tmp + getamnt1;
+                    lvi1.SubItems.Add(tmp_mnt.ToString("#,###0.00"));
+                    lvi1.SubItems.Add("0.00".ToString());
+                    lvi1.SubItems.Add("0.00".ToString());
+                    txtmonthstopay.Text = monthstoPay - 1 + " " + "Months to pay";
+                    lvi1.SubItems.Add("Pending");
+                    lsvPaymentSched.Items.Add(lvi1);
+                    return;
+                }
+                else
+                {
+                    lvi1.SubItems.Add(getamnt.ToString("#,###0.00"));
+                }
+                lvi1.SubItems.Add("Pending");
+                lsvPaymentSched.Items.Add(lvi1);
+                //schedule_of_payment_id, schedule_date, cust_id, remarks
+
+            }
+
+            //=================
+
+                //foreach (DateTime eel in lstq)
+                //{
+                //   ListViewItem lvi1 = new ListViewItem();
+                //   DateTime lastDayOfThisMonth = new DateTime(eel.Year, eel.Month, 1).AddMonths(1).AddDays(-1);
+
+                //    //DateTime dt = DateTime.Today;
+                //  lvi1.Text = lastDayOfThisMonth.AddMonths(1).ToString("d");
+                  
+                //   //lstdatesched.Add(lastDayOfThisMonth.ToString());
+                //   lstdatesched.Add(lvi1.Text.ToString());
+                //   no_ofDays = Convert.ToInt32(lastDayOfThisMonth.Day.ToString());
+                //  // no_ofDays = Convert.ToInt32(lastDayOfThisMonth.AddMonths(Convert.ToInt16(lvi1.Text.Substring(1).ToString())).Day.ToString());
+
+                //   pmt = 0.0005; //0.015 / 30;  //
+                //   pmt1 = pmt * no_ofDays;
+                //   getamnt1 = getamnt * pmt1;
+                //   re = (mntDue) - getamnt1;
+                //   tmp = getamnt;
+                //   getamnt = getamnt - re;
+
+                //   if (getamnt >= 0)
+                //   {
+                //       lvi1.SubItems.Add(mntDue.ToString("#,###0.00"));
+                //       lvi1.SubItems.Add(getamnt1.ToString("#,###0.00")); 
+                //   }
+                 
+                //   monthstoPay = monthstoPay + 1;
+                //   lstamt.Add(getamnt);
+                //  if (getamnt <= 0)
+                //   {
+                //       double tmp_mnt = tmp + getamnt1;
+                //       lvi1.SubItems.Add(tmp_mnt.ToString("#,###0.00"));
+                //       lvi1.SubItems.Add("0.00".ToString());
+                //       lvi1.SubItems.Add("0.00".ToString());
+                //       txtmonthstopay.Text = monthstoPay - 1 + " " + "Months to pay";
+                //       lvi1.SubItems.Add("Pending");
+                //       lsvPaymentSched.Items.Add(lvi1);
+                //       return;
+                //   }
+                //   else
+                //   {
+                //       lvi1.SubItems.Add(getamnt.ToString("#,###0.00"));
+                //   }
+                //   lvi1.SubItems.Add("Pending");
+                //   lsvPaymentSched.Items.Add(lvi1);
+                //    //schedule_of_payment_id, schedule_date, cust_id, remarks
+
+                //}
 
         }
 
@@ -252,6 +329,7 @@ namespace loantracking.FORMS
                         lend.propPrinc = Convert.ToDouble(lsvPaymentSched.Items[i].SubItems[2].Text);
                         lend.propSchedate = Convert.ToDateTime(lsvPaymentSched.Items[i].Text.ToString());
                         lend.propHpenalty = 0.0;
+                        lend.propBalanceAmount = Convert.ToDouble(lsvPaymentSched.Items[i].SubItems[3].Text);
                         lend.INSERT_LENDER_INFORM(); // tschedule_of_payment
                         
                         //bl.propRemarks = "Pending";

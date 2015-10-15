@@ -93,6 +93,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnUpload = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label32 = new System.Windows.Forms.Label();
+            this.cboLenderType = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBorrower)).BeginInit();
@@ -296,7 +298,7 @@
             this.cboGender.Items.AddRange(new object[] {
             "Female",
             "Male"});
-            this.cboGender.Location = new System.Drawing.Point(721, 28);
+            this.cboGender.Location = new System.Drawing.Point(715, 80);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(242, 21);
             this.cboGender.TabIndex = 21;
@@ -305,7 +307,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(718, 9);
+            this.label10.Location = new System.Drawing.Point(712, 61);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 16);
             this.label10.TabIndex = 22;
@@ -315,7 +317,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(718, 61);
+            this.label11.Location = new System.Drawing.Point(712, 113);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(94, 16);
             this.label11.TabIndex = 24;
@@ -328,7 +330,7 @@
             "Single",
             "Married",
             "Divorce"});
-            this.cboCivilStatus.Location = new System.Drawing.Point(721, 80);
+            this.cboCivilStatus.Location = new System.Drawing.Point(715, 132);
             this.cboCivilStatus.Name = "cboCivilStatus";
             this.cboCivilStatus.Size = new System.Drawing.Size(242, 21);
             this.cboCivilStatus.TabIndex = 23;
@@ -337,7 +339,7 @@
             // txtbirthplace
             // 
             this.txtbirthplace.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbirthplace.Location = new System.Drawing.Point(721, 125);
+            this.txtbirthplace.Location = new System.Drawing.Point(715, 177);
             this.txtbirthplace.Multiline = true;
             this.txtbirthplace.Name = "txtbirthplace";
             this.txtbirthplace.Size = new System.Drawing.Size(242, 37);
@@ -347,7 +349,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(718, 106);
+            this.label12.Location = new System.Drawing.Point(712, 158);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(107, 16);
             this.label12.TabIndex = 25;
@@ -489,7 +491,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(718, 168);
+            this.label23.Location = new System.Drawing.Point(712, 220);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(97, 16);
             this.label23.TabIndex = 37;
@@ -501,7 +503,7 @@
             this.cbohousetype.Items.AddRange(new object[] {
             "Owned",
             "Rented"});
-            this.cbohousetype.Location = new System.Drawing.Point(721, 187);
+            this.cbohousetype.Location = new System.Drawing.Point(715, 239);
             this.cbohousetype.Name = "cbohousetype";
             this.cbohousetype.Size = new System.Drawing.Size(242, 21);
             this.cbohousetype.TabIndex = 36;
@@ -745,11 +747,34 @@
             this.btnUpload.UseVisualStyleBackColor = true;
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(712, 9);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(125, 16);
+            this.label32.TabIndex = 49;
+            this.label32.Text = "Borrower\'s Type :";
+            // 
+            // cboLenderType
+            // 
+            this.cboLenderType.FormattingEnabled = true;
+            this.cboLenderType.Items.AddRange(new object[] {
+            "Active",
+            "Inactive"});
+            this.cboLenderType.Location = new System.Drawing.Point(715, 28);
+            this.cboLenderType.Name = "cboLenderType";
+            this.cboLenderType.Size = new System.Drawing.Size(242, 21);
+            this.cboLenderType.TabIndex = 48;
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1315, 541);
+            this.Controls.Add(this.label32);
+            this.Controls.Add(this.cboLenderType);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.picBorrower);
@@ -871,5 +896,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.ComboBox cboLenderType;
     }
 }

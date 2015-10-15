@@ -91,5 +91,23 @@ namespace loantracking.FORMS
         {
             this.Close();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            cl_moneylender l = new cl_moneylender();
+            l.Search_MONEYLENDER(lsvMoneyLender, textBox1.Text);
+        }
+
+        private void cboBtype_Click(object sender, EventArgs e)
+        {
+           
+            
+        }
+
+        private void cboBtype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cl_moneylender l = new cl_moneylender();
+            l.LOAD_MONEYLENDER_Actvie(lsvMoneyLender, cboBtype.Text);
+        }
     }
 }

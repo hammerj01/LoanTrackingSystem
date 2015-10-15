@@ -20,14 +20,14 @@ namespace loantracking.FORMS
         private void btn_logIn_Click(object sender, EventArgs e)
         {
             //user_id, username, password, utype
-            //string type = "";
+            string type = "";
             if (txtpassword.Text == "" || txtusername.Text == "")
             {
                 MessageBox.Show("Please supply the missing fields.");
                 return;
             }
             bool s = false;
-            string sql = "SELECT * from tuser where username= '" + this.txtusername.Text + "' && password = '" +this.txtpassword.Text + "' && utype = 'administrator'";
+            string sql = "SELECT * from tuser where username= '" + this.txtusername.Text + "' && password = '" +this.txtpassword.Text + "'";
             PUBLIC_VARS.d.execute(sql);
            
 
@@ -35,18 +35,26 @@ namespace loantracking.FORMS
             {
                 PUBLIC_VARS.d.reader.Read();
                         s = true;
+                  type = PUBLIC_VARS.d.reader["utype"].ToString();
             }
             PUBLIC_VARS.d.reader.Close();
             if (s)
             {
+               
                 this.Hide();
                 mLoanTracking mf = new mLoanTracking();
-                //if (type.Equals("user"))
-                //{
+                type = type.ToLower();
+                if (type.Equals("guest"))
+                {
                 //    mf.maintainanceToolStripMenuItem.Enabled = false;
                 //    mf.transactionToolStripMenuItem.Enabled = false;
                 //    mf.createActivityToolStripMenuItem.Enabled = false;
-                //}
+                    mf.MainMenuStrip.Items[0].Visible = false;
+                    mf.MainMenuStrip.Items[1].Visible = false;
+                    mf.MainMenuStrip.Items[2].Visible = false;
+          
+                
+                }
                 mf.ShowDialog();
                 this.Close();
             }

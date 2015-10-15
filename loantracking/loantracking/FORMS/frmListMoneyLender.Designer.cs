@@ -37,6 +37,7 @@
             this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader9 = new System.Windows.Forms.ColumnHeader();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,6 +45,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnView = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.cboBtype = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lsvMoneyLender
@@ -56,7 +59,8 @@
             this.columnHeader4,
             this.columnHeader6,
             this.columnHeader7,
-            this.columnHeader5});
+            this.columnHeader5,
+            this.columnHeader9});
             this.lsvMoneyLender.FullRowSelect = true;
             this.lsvMoneyLender.GridLines = true;
             this.lsvMoneyLender.Location = new System.Drawing.Point(0, 0);
@@ -108,6 +112,12 @@
             this.columnHeader5.Text = "Date";
             this.columnHeader5.Width = 120;
             // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Borrower\'s Type";
+            this.columnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader9.Width = 200;
+            // 
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(802, 483);
@@ -120,7 +130,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(663, 483);
+            this.btnDelete.Location = new System.Drawing.Point(293, 523);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(122, 42);
             this.btnDelete.TabIndex = 2;
@@ -140,12 +150,13 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(435, 498);
+            this.btnSearch.Location = new System.Drawing.Point(92, 524);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "&Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Visible = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // textBox1
@@ -154,15 +165,17 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(300, 20);
             this.textBox1.TabIndex = 5;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(516, 498);
+            this.btnView.Location = new System.Drawing.Point(173, 524);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(75, 23);
             this.btnView.TabIndex = 6;
             this.btnView.Text = "&View";
             this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Visible = false;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // btnClose
@@ -175,11 +188,36 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // cboBtype
+            // 
+            this.cboBtype.FormattingEnabled = true;
+            this.cboBtype.Items.AddRange(new object[] {
+            "All",
+            "Active",
+            "Inactive"});
+            this.cboBtype.Location = new System.Drawing.Point(582, 495);
+            this.cboBtype.Name = "cboBtype";
+            this.cboBtype.Size = new System.Drawing.Size(192, 21);
+            this.cboBtype.TabIndex = 8;
+            this.cboBtype.SelectedIndexChanged += new System.EventHandler(this.cboBtype_SelectedIndexChanged);
+            this.cboBtype.Click += new System.EventHandler(this.cboBtype_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(487, 498);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Barrower\'s Type :";
+            // 
             // frmListMoneyLender
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 537);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cboBtype);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnView);
@@ -214,5 +252,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ComboBox cboBtype;
+        private System.Windows.Forms.Label label2;
     }
 }
